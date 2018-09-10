@@ -28,13 +28,11 @@ public class CameraMove : MonoBehaviour {
             if (Input.mousePosition.x > width - boundary && transform.position.x < 170)
             {
                 transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * -Movespeed, 0.0f, 0.0f);
-                print(transform.position.x);
             }
 
             if (Input.mousePosition.x < 0 + boundary && transform.position.x > 25)
             {
                 transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * -Movespeed, 0.0f, 0.0f);
-                print(transform.position.x);
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Zoom
