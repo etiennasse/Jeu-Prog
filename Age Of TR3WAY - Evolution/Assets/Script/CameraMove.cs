@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour {
 
-    [SerializeField] public float Movespeed = 10.0f;
+    [SerializeField] public float Movespeed = 30.0f;
     [SerializeField] public float Zoomspeed = 0.5f;
     [SerializeField] public float Rotation = 0.5f;
     [SerializeField] public float MaxRotation = 0.3f;
@@ -24,15 +24,14 @@ public class CameraMove : MonoBehaviour {
 
     void Update()
     {
-
             if (Input.mousePosition.x > width - boundary && transform.position.x < 170)
             {
-                transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * -Movespeed, 0.0f, 0.0f);
+                transform.position -= new Vector3(Time.deltaTime * -Movespeed, 0.0f, 0.0f);
             }
 
             if (Input.mousePosition.x < 0 + boundary && transform.position.x > 25)
             {
-                transform.position -= new Vector3(Input.GetAxisRaw("Mouse X") * Time.deltaTime * -Movespeed, 0.0f, 0.0f);
+                transform.position -= new Vector3(Time.deltaTime * Movespeed, 0.0f, 0.0f);
             }
 
             if (Input.GetAxis("Mouse ScrollWheel") > 0) //Zoom

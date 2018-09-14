@@ -5,6 +5,7 @@ using UnityEngine;
 public class Button1 : MonoBehaviour {
 
     [SerializeField]  public GameObject prefab;
+    [SerializeField] GameObject spawnPoint;
 
     // Use this for initialization
     void Start () {
@@ -18,9 +19,7 @@ public class Button1 : MonoBehaviour {
 
     public void spawn()
     {
-        
         Quaternion rot = Quaternion.Euler(0, 90, 0);
-        Vector3 pos = new Vector3(15, 5,205);
-        Instantiate(prefab, pos, rot);
+        Instantiate(prefab, spawnPoint.transform.position, rot);
     }
 }
