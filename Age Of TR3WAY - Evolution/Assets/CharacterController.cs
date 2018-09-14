@@ -23,8 +23,6 @@ public class CharacterController : MonoBehaviour {
         {
             if (waypointIndex != WaypointController.lastWaypointIndex)
                 GetNextWaypoint();
-            else
-                Destroy(gameObject);
         }
     }
 
