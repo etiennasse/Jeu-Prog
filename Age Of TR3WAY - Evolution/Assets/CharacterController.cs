@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
 
-    public float speed = 10f;
+    public float speed = 5f;
     private Transform target;
     private int waypointIndex;
+    Animator a;
 
     void Start()
     {
         target = WaypointController.waypoints[waypointIndex];
+        a = GetComponent<Animator>();
+        a.Play("Walk");
     }
 
     // Update is called once per frame
