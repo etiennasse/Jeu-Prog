@@ -62,9 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CharacterController.cs" />
-    <Compile Include="Assets\Script\Button1.cs" />
     <Compile Include="Assets\Script\Button2.cs" />
     <Compile Include="Assets\Script\Button3.cs" />
+    <Compile Include="Assets\Script\ButtonController.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
     <Compile Include="Assets\Script\WaypointController.cs" />
     <None Include="Assets\Little Heroes Mega Pack\Read me.txt" />

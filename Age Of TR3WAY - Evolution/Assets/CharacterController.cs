@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour {
 
     public float speed = 5f;
-    public float turnSpeed = 7f;
+    public float turnSpeed = 14f;
     private Transform target;
     private int waypointIndex;
     Animator a;
@@ -35,7 +35,7 @@ public class CharacterController : MonoBehaviour {
     void UpdateRotation() {
         Vector3 direction = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
-        Vector3 rotation = Quaternion.Lerp(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
