@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour {
 
     public float speed = 5f;
+    public float turnSpeed = 7f;
     private Transform target;
     private int waypointIndex;
     Animator a;
@@ -22,11 +23,20 @@ public class CharacterController : MonoBehaviour {
         Vector3 direction = target.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
+        UpdateRotation();
+
         if (Vector3.Distance(transform.position, target.position) <= .2f)
         {
             if (waypointIndex != WaypointController.lastWaypointIndex)
                 GetNextWaypoint();
         }
+    }
+
+    void UpdateRotation() {
+        Vector3 direction = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        Vector3 rotation = Quaternion.Lerp(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     private void GetNextWaypoint()
