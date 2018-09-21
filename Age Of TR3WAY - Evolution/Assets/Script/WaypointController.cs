@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WaypointController : MonoBehaviour {
 
     public static Transform[] waypoints;
+    public static Transform[] ennemyWaypoints;
     public static int lastWaypointIndex;
 
     void Awake()
@@ -14,7 +16,8 @@ public class WaypointController : MonoBehaviour {
         {
             waypoints[i] = transform.GetChild(i);
         }
-
+        ennemyWaypoints = waypoints;
+        Array.Reverse(ennemyWaypoints);
         lastWaypointIndex = waypoints.Length - 1;
     }
 }

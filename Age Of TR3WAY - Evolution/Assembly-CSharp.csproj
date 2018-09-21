@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\CharacterController.cs" />
     <Compile Include="Assets\EnemyController.cs" />
+    <Compile Include="Assets\EnemySpawnController.cs" />
     <Compile Include="Assets\Script\Button2.cs" />
     <Compile Include="Assets\Script\Button3.cs" />
     <Compile Include="Assets\Script\ButtonController.cs" />
