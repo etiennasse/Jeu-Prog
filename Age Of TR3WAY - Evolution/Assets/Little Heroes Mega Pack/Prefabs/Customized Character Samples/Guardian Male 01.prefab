@@ -694,6 +694,9 @@ GameObject:
   m_Component:
   - component: {fileID: 483612}
   - component: {fileID: 9551032}
+  - component: {fileID: 54430650804477238}
+  - component: {fileID: 136849960977207004}
+  - component: {fileID: 114010686679679564}
   m_Layer: 0
   m_Name: Guardian Male 01
   m_TagString: Untagged
@@ -1241,7 +1244,7 @@ Transform:
   m_GameObject: {fileID: 197988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 426456}
   - {fileID: 456148}
@@ -10739,3 +10742,44 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 197988}
   m_IsPrefabAsset: 1
+--- !u!54 &54430650804477238
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197988}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1.05
+  m_AngularDrag: 2000
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 2
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &114010686679679564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf90471102c98714d82665d4074c8570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  turnSpeed: 14
+--- !u!136 &136849960977207004
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197988}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0
+  m_Height: 0.3
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.2, z: 0}
