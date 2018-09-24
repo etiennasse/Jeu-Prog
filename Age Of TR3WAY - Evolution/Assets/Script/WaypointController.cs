@@ -3,21 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaypointController : MonoBehaviour {
-
-    public static Transform[] waypoints;
+public class WaypointController : MonoBehaviour
+{
+    public static Transform[] alliesWaypoints;
     public static Transform[] ennemyWaypoints;
     public static int lastWaypointIndex;
-
     void Awake()
     {
-        waypoints = new Transform[transform.childCount];
-        for (int i = 0; i < waypoints.Length; i++)
+        alliesWaypoints = new Transform[transform.childCount];
+        for (int i = 0; i < alliesWaypoints.Length; i++)
         {
-            waypoints[i] = transform.GetChild(i);
+            alliesWaypoints[i] = transform.GetChild(i);
         }
-        //ennemyWaypoints = waypoints;
-        //Array.Reverse(ennemyWaypoints);
-        lastWaypointIndex = waypoints.Length - 1;
+        ennemyWaypoints = (Transform[])alliesWaypoints.Clone();
+        Array.Reverse(ennemyWaypoints);
+        lastWaypointIndex = alliesWaypoints.Length - 1;
     }
 }

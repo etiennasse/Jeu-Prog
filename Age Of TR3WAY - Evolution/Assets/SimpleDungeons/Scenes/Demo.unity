@@ -43072,8 +43072,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2043388397}
+  - component: {fileID: 2043388398}
   m_Layer: 0
-  m_Name: EnnemiesSpawnPoint
+  m_Name: EnemiesSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43092,6 +43093,20 @@ Transform:
   m_Father: {fileID: 261290689}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2043388398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2043388396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae8bbd8d0028244392256b4223c9ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstEnemy: {fileID: 179068, guid: b96ee66c88d15864aa452d218e65b1e7, type: 2}
+  secondEnemy: {fileID: 197988, guid: 535cd9cdb61d71d479ed2a3ab62f76dd, type: 2}
+  thirdEnemy: {fileID: 139232, guid: f5307cbfc48c49640b3c88d055c4e529, type: 2}
 --- !u!4 &2044294683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446302, guid: c1dcb0322b539634fb85bcb9550da087,
