@@ -16,8 +16,8 @@ public class WaypointController : MonoBehaviour {
         {
             waypoints[i] = transform.GetChild(i);
         }
-        ennemyWaypoints = waypoints;
-        Array.Reverse(ennemyWaypoints);
+        //ennemyWaypoints = waypoints;
+        //Array.Reverse(ennemyWaypoints);
         lastWaypointIndex = waypoints.Length - 1;
     }
 }

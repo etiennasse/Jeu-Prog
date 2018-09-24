@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour {
 
     void Start()
     {
-        target = WaypointController.ennemyWaypoints[waypointIndex];
+        //target = WaypointController.ennemyWaypoints[waypointIndex];
         a = GetComponent<Animator>();
         a.Play("Walk");
     }
@@ -43,6 +43,6 @@ public class EnemyController : MonoBehaviour {
     private void GetNextWaypoint()
     {
         waypointIndex++;
-        target = WaypointController.ennemyWaypoints[waypointIndex];
+        //target = WaypointController.ennemyWaypoints[waypointIndex];
     }
 }
