@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour {
     private Transform target;
     private int waypointIndex;
     Animator a;
+    public static string tagName = "Enemy";
+
 
     void Start()
     {
