@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
@@ -9,6 +10,8 @@ public class CharacterController : MonoBehaviour {
     private Transform target;
     private int waypointIndex;
     Animator a;
+    public Image healthBar;
+    private float playerhealth = 100f;
 
     void Start()
     {
@@ -43,5 +46,23 @@ public class CharacterController : MonoBehaviour {
     {
         waypointIndex++;
         target = WaypointController.alliesWaypoints[waypointIndex];
+    }
+
+    public void TakeDamage(float amount)
+    {
+        playerhealth -= amount;
+
+        healthBar.fillAmount = playerhealth;
+
+        if (playerhealth <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    public void Die()
+    {
+
     }
 }
