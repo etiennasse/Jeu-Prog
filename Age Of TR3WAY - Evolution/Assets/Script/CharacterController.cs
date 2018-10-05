@@ -10,28 +10,42 @@ public class CharacterController : MonoBehaviour {
     private Transform target;
     private int waypointIndex;
     Animator a;
-    public Image healthBar;
-    private float playerhealth = 100f;
+    public Image imageHealth;
+    public float startHealth = 100;
+    private float health;
+    public float waitTime = 1f;
+    float timer;
 
     void Start()
     {
         target = WaypointController.alliesWaypoints[waypointIndex];
         a = GetComponent<Animator>();
         a.Play("Walk");
+        health = startHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
-
-        UpdateRotation();
-
-        if (Vector3.Distance(transform.position, target.position) <= .2f)
+        if (!CharacterIsDead())
         {
-            if (waypointIndex != WaypointController.lastWaypointIndex)
-                GetNextWaypoint();
+            Vector3 direction = target.position - transform.position;
+            transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+            UpdateRotation();
+
+            if (Vector3.Distance(transform.position, target.position) <= .2f)
+            {
+                if (waypointIndex != WaypointController.lastWaypointIndex)
+                    GetNextWaypoint();
+            }
+
+            timer += Time.deltaTime;
+            if (timer > waitTime)
+            {
+                TakeDamage(1f);
+                timer = 0f;
+            }
         }
     }
 
@@ -50,11 +64,11 @@ public class CharacterController : MonoBehaviour {
 
     public void TakeDamage(float amount)
     {
-        playerhealth -= amount;
+        health -= 25f;
 
-        healthBar.fillAmount = playerhealth;
+        imageHealth.fillAmount = health / startHealth;
 
-        if (playerhealth <= 0)
+        if (CharacterIsDead())
         {
             Die();
         }
@@ -63,6 +77,12 @@ public class CharacterController : MonoBehaviour {
 
     public void Die()
     {
+        a.Play("Die");
+        Destroy(gameObject, 1.7f);
+    }
 
+    public bool CharacterIsDead()
+    {
+        return health <= 0;
     }
 }
