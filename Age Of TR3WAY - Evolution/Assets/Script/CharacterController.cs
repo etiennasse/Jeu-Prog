@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour {
+public class CharacterController : MonoBehaviour
+{
 
     public float speed = 5f;
     public float turnSpeed = 14f;
-
 
     private Transform waypointTarget;
     private GameObject enemyTarget;
@@ -28,15 +28,33 @@ public class CharacterController : MonoBehaviour {
     {
         if (HasEnnemyTarget())
         {
-            //TODO: Attack target
+            AttackTarget();
         }
-        else if(!isStopped)
+        else
         {
             UpdateMovement();
         }
-        else if(isStopped)
+    }
+
+    void AttackTarget()
+    {
+        CheckIfTargetIsDead();
+    }
+
+    void CheckIfTargetIsDead()
+    {
+        if(enemyTarget == null)
         {
-            //TODO: Add check if object can move
+            MakeAlliesMove(); 
+        }
+    }
+
+    void MakeAlliesMove()
+    {
+        GameObject[] allies = GameObject.FindGameObjectsWithTag(tagName);
+        foreach (GameObject allie in allies)
+        {
+            allie.GetComponent<CharacterController>().StartMovement();
         }
     }
 
@@ -67,51 +85,81 @@ public class CharacterController : MonoBehaviour {
     {
         GameObject closestCharacter = GetClosestCharacter();
 
-        /*if (closestCharacter != null && closestCharacter != gameObject)
+        if (closestCharacter)
         {
-            float distanceToCharacter = Vector3.Distance(transform.position, closestCharacter.transform.position);
-
+            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacter.transform.position));
+            print(distanceToCharacter);
             if (distanceToCharacter <= 4f)
             {
-                isStopped = true;
+                if (IsFirstOfTheRow(gameObject))
+                {
+                    if (closestCharacter.tag == EnemyController.tagName)
+                    {
+                        enemyTarget = closestCharacter;
+                    }
+                }
+                StopMovement();
             }
-        }*/
+            else if (distanceToCharacter > 4f && !isStopped)
+            {
+                StartMovement();
+            }
+        }
+    }
+
+    public void StopMovement()
+    {
+        isStopped = true;
+        animator.Play("Idle");
+    }
+
+    public void StartMovement()
+    {
+        isStopped = false;
+        animator.Play("Walk");
     }
 
     public GameObject GetClosestCharacter()
     {
-        GameObject[] gameCharacters = GetGameCharacters();
-        Debug.Log(gameCharacters.Length);
+        List<GameObject> gameCharacters = GetGameCharacters();
         GameObject closestCharacter = null;
         float closestDistance = Mathf.Infinity;
 
         foreach (GameObject character in gameCharacters)
         {
-            float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
-            if (distanceToCharacter < closestDistance)
+            if (character != null)
             {
-                closestDistance = distanceToCharacter;
-                closestCharacter = character;
+                if (character != this.gameObject)
+                {
+                    float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, character.transform.position));
+                    if (distanceToCharacter < closestDistance)
+                    {
+                        closestDistance = distanceToCharacter;
+                        closestCharacter = character;
+                    }
+                }
             }
         }
-
         return closestCharacter;
     }
 
-    public GameObject[] GetGameCharacters()
+    public List<GameObject> GetGameCharacters()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyController.tagName);
-        GameObject[] allies = GameObject.FindGameObjectsWithTag(tagName);
-        GameObject[] gameCharaters = new GameObject[enemies.Length + allies.Length];
-        Array.Copy(enemies, gameCharaters, enemies.Length);
-        if (enemies.Length - allies.Length >= 0)
-        {
-            Array.Copy(allies, gameCharaters, enemies.Length - allies.Length);
-        }
-        return (GameObject[])gameCharaters.Clone();
+        List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(EnemyController.tagName));
+        List<GameObject> allies = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName)); ;
+        List<GameObject> gameCharaters = new List<GameObject>();
+        gameCharaters.AddRange(enemies);
+        gameCharaters.AddRange(allies);
+        return gameCharaters;
     }
 
-    void UpdateRotation() {
+    public GameObject GetFirstCharacterOfTheRow()
+    {
+        return GameObject.FindGameObjectsWithTag(tagName)[0];
+    }
+
+    void UpdateRotation()
+    {
         Vector3 direction = waypointTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
@@ -127,6 +175,11 @@ public class CharacterController : MonoBehaviour {
     private bool HasEnnemyTarget()
     {
         return enemyTarget != null;
+    }
+
+    public bool IsFirstOfTheRow(GameObject character)
+    {
+        return character == GetFirstCharacterOfTheRow();
     }
 
     private void DeleteEnemyTarget()
