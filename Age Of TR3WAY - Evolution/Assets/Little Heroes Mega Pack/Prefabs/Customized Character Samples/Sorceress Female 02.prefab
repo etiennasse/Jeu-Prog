@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 136766718863136322}
   m_Layer: 0
   m_Name: Sorceress Female 02
-  m_TagString: Untagged
+  m_TagString: Allies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

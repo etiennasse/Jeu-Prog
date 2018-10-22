@@ -1,56 +1,141 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
-public class CharacterController : MonoBehaviour {
+public class CharacterController : MonoBehaviour
+{
 
     public float speed = 5f;
     public float turnSpeed = 14f;
-    private Transform target;
+
+    private Transform waypointTarget;
+    private GameObject target;
     private int waypointIndex;
-    Animator a;
-    public Image imageHealth;
-    public float startHealth = 100;
-    private float health;
-    public float waitTime = 1f;
-    float timer;
+    private bool isStopped = false;
+    public static string tagName = "Allies";
+    Animator animator;
 
     void Start()
     {
-        target = WaypointController.alliesWaypoints[waypointIndex];
-        a = GetComponent<Animator>();
-        a.Play("Walk");
-        health = startHealth;
+        waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
+        animator = GetComponent<Animator>();
+        animator.Play("Walk");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!CharacterIsDead())
+        if (HasTarget())
         {
-            Vector3 direction = target.position - transform.position;
-            transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
-
-            UpdateRotation();
-
-            if (Vector3.Distance(transform.position, target.position) <= .2f)
-            {
-                if (waypointIndex != WaypointController.lastWaypointIndex)
-                    GetNextWaypoint();
-            }
-
-            timer += Time.deltaTime;
-            if (timer > waitTime)
-            {
-                TakeDamage(1f);
-                timer = 0f;
-            }
+            AttackTarget();
+        }
+        else
+        {
+            UpdateMovement();
         }
     }
 
-    void UpdateRotation() {
-        Vector3 direction = target.position - transform.position;
+    void AttackTarget()
+    {
+        //TODO
+    }
+
+    void UpdateMovement()
+    {
+        CheckClosestCharacterDistance();
+        if (!isStopped)
+        {
+            PerformMovementUpdate();
+        }
+    }
+
+    void PerformMovementUpdate()
+    {
+        Vector3 direction = waypointTarget.position - transform.position;
+        transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+        UpdateRotation();
+
+        if (Vector3.Distance(transform.position, waypointTarget.position) <= .2f)
+        {
+            if (waypointIndex != WaypointController.lastWaypointIndex)
+                GetNextWaypoint();
+        }
+    }
+
+    private void CheckClosestCharacterDistance()
+    {
+        GameObject closestCharacterInFront = GetClosestCharacterInFront();
+
+        if (closestCharacterInFront)
+        {
+            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacterInFront.transform.position));
+            if (distanceToCharacter <= 4f)
+            {
+                StopMovement();
+            }
+            else if (distanceToCharacter > 4.5f && isStopped)
+            {
+                StartMovement();
+            }
+        }
+        else if(!closestCharacterInFront && isStopped)
+        {
+            StartMovement();
+        }
+    }
+
+    public void StopMovement()
+    {
+        isStopped = true;
+        animator.Play("Idle");
+    }
+
+    public void StartMovement()
+    {
+        isStopped = false;
+        animator.Play("Walk");
+    }
+
+    public GameObject GetClosestCharacterInFront()
+    {
+        List<GameObject> gameCharacters = GetGameCharacters();
+        GameObject closestCharacter = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject character in gameCharacters)
+        {
+            if (character != null)
+            {
+                if (character != this.gameObject)
+                {
+                    float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
+                    bool isBehind = transform.position.x > character.transform.position.x;
+                    if (distanceToCharacter < closestDistance  && !isBehind)
+                    {
+                        closestDistance = distanceToCharacter;
+                        closestCharacter = character;
+                    }
+                }
+            }
+        }
+        return closestCharacter;
+    }
+
+    public List<GameObject> GetGameCharacters()
+    {
+        List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(EnemyController.tagName));
+        List<GameObject> allies = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName)); ;
+        List<GameObject> gameCharaters = new List<GameObject>();
+        gameCharaters.AddRange(enemies);
+        gameCharaters.AddRange(allies);
+        return gameCharaters;
+    }
+
+    void UpdateRotation()
+    {
+        Vector3 direction = waypointTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -59,30 +144,11 @@ public class CharacterController : MonoBehaviour {
     private void GetNextWaypoint()
     {
         waypointIndex++;
-        target = WaypointController.alliesWaypoints[waypointIndex];
+        waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
     }
 
-    public void TakeDamage(float amount)
+    private bool HasTarget()
     {
-        health -= 25f;
-
-        imageHealth.fillAmount = health / startHealth;
-
-        if (CharacterIsDead())
-        {
-            Die();
-        }
-
-    }
-
-    public void Die()
-    {
-        a.Play("Die");
-        Destroy(gameObject, 1.7f);
-    }
-
-    public bool CharacterIsDead()
-    {
-        return health <= 0;
+        return target != null;
     }
 }

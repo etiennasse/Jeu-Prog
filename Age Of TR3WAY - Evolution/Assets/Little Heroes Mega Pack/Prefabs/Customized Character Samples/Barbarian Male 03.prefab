@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 136011850792974546}
   m_Layer: 0
   m_Name: Barbarian Male 03
-  m_TagString: Untagged
+  m_TagString: Allies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
