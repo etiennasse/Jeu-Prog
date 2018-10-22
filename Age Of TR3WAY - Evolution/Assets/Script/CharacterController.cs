@@ -10,7 +10,7 @@ public class CharacterController : MonoBehaviour
     public float turnSpeed = 14f;
 
     private Transform waypointTarget;
-    private GameObject enemyTarget;
+    private GameObject target;
     private int waypointIndex;
     private bool isStopped = false;
     public static string tagName = "Allies";
@@ -26,7 +26,7 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (HasEnnemyTarget())
+        if (HasTarget())
         {
             AttackTarget();
         }
@@ -147,8 +147,8 @@ public class CharacterController : MonoBehaviour
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
     }
 
-    private bool HasEnnemyTarget()
+    private bool HasTarget()
     {
-        return enemyTarget != null;
+        return target != null;
     }
 }

@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour {
     public float speed = 5f;
     public float turnSpeed = 14f;
     private Transform waypointTarget;
-    private GameObject allieTarget = null;
+    private GameObject target = null;
     private int waypointIndex;
     Animator animator;
     public static string tagName = "Enemy";
@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour {
 
     void Update()
     {
-        if (HasEnnemyTarget())
+        if (HasTarget())
         {
             AttackTarget();
         }
@@ -151,8 +151,8 @@ public class EnemyController : MonoBehaviour {
         waypointTarget = WaypointController.ennemyWaypoints[waypointIndex];
     }
 
-    private bool HasEnnemyTarget()
+    private bool HasTarget()
     {
-        return allieTarget != null;
+        return target != null;
     }
 }
