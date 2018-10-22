@@ -906,7 +906,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.6, y: 115.59, z: -329.92}
+  m_LocalPosition: {x: 3.903328, y: -0.099998474, z: 196.97064}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 499830}
@@ -10707,6 +10707,7 @@ GameObject:
   - component: {fileID: 223028689122043112}
   - component: {fileID: 114625197040269740}
   - component: {fileID: 114860921790196016}
+  - component: {fileID: 114894850828642904}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -10870,6 +10871,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114894850828642904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290927881405352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f4c563c1fdc5e45ae4308b100b1428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136766718863136322
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -10923,14 +10935,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290927881405352}
-  m_LocalRotation: {x: 0.098254524, y: -0.7002472, z: 0.098254524, w: 0.7002472}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.000030487776}
   m_LocalScale: {x: 0.5000004, y: 0.5, z: 0.5000004}
   m_Children:
   - {fileID: 224476795212413384}
   m_Father: {fileID: 442626}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 15.975, y: -90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.2320328, y: 2.100006}
