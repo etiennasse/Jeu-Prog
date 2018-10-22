@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AlliesBaseTakeDamage.cs" />
     <Compile Include="Assets\Script\Button2.cs" />
     <Compile Include="Assets\Script\Button3.cs" />
     <Compile Include="Assets\Script\ButtonController.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Assets\Script\CharacterController.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\EnemySpawnController.cs" />
+    <Compile Include="Assets\Script\FaceCamera.cs" />
     <Compile Include="Assets\Script\WaypointController.cs" />
     <None Include="Assets\Little Heroes Mega Pack\Read me.txt" />
     <Reference Include="UnityEditor.StandardEvents">
