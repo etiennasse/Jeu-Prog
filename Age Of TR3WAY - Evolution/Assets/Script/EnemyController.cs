@@ -36,24 +36,7 @@ public class EnemyController : MonoBehaviour {
 
     void AttackTarget()
     {
-        CheckIfTargetIsDead();
-    }
-
-    void CheckIfTargetIsDead()
-    {
-        if (allieTarget == null)
-        {
-            MakeEnemyMove();
-        }
-    }
-
-    void MakeEnemyMove()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tagName);
-        foreach (GameObject enemy in enemies)
-        {
-            enemy.GetComponent<EnemyController>().StartMovement();
-        }
+        //TODO
     }
 
     // Update is called once per frame
@@ -82,27 +65,24 @@ public class EnemyController : MonoBehaviour {
 
     private void CheckClosestCharacterDistance()
     {
-        GameObject closestCharacter = GetClosestCharacter();
+        GameObject closestCharacterInFront = GetClosestCharacterInFront();
 
-        if (closestCharacter)
+        if (closestCharacterInFront)
         {
-            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacter.transform.position));
+            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacterInFront.transform.position));
 
             if (distanceToCharacter <= 4f)
             {
-                if (IsFirstOfTheRow(gameObject))
-                {
-                    if (closestCharacter.tag == tagName)
-                    {
-                        allieTarget = closestCharacter;
-                    }
-                }
                 StopMovement();
             }
-            else if (distanceToCharacter > 4f && !isStopped)
+            else if (distanceToCharacter > 4.5f && isStopped)
             {
                 StartMovement();
             }
+        }
+        else if(!closestCharacterInFront && isStopped)
+        {
+            StartMovement();
         }
     }
 
@@ -118,12 +98,11 @@ public class EnemyController : MonoBehaviour {
         animator.Play("Walk");
     }
 
-    public GameObject GetClosestCharacter()
+    public GameObject GetClosestCharacterInFront()
     {
         List<GameObject> gameCharacters = GetGameCharacters();
         GameObject closestCharacter = null;
         float closestDistance = Mathf.Infinity;
-
         foreach (GameObject character in gameCharacters)
         {
             if (character != null)
@@ -131,7 +110,8 @@ public class EnemyController : MonoBehaviour {
                 if (character != this.gameObject)
                 {
                     float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, character.transform.position));
-                    if (distanceToCharacter < closestDistance)
+                    bool isBehind = transform.position.x < character.transform.position.x;
+                    if (distanceToCharacter < closestDistance && !isBehind)
                     {
                         closestDistance = distanceToCharacter;
                         closestCharacter = character;
@@ -174,16 +154,5 @@ public class EnemyController : MonoBehaviour {
     private bool HasEnnemyTarget()
     {
         return allieTarget != null;
-    }
-
-    public bool IsFirstOfTheRow(GameObject character)
-    {
-        return character == GetFirstCharacterOfTheRow();
-    }
-
-    private void DeleteEnemyTarget()
-    {
-        allieTarget = null;
-        isStopped = false;
     }
 }

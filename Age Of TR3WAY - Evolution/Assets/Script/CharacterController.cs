@@ -38,24 +38,7 @@ public class CharacterController : MonoBehaviour
 
     void AttackTarget()
     {
-        CheckIfTargetIsDead();
-    }
-
-    void CheckIfTargetIsDead()
-    {
-        if(enemyTarget == null)
-        {
-            MakeAlliesMove(); 
-        }
-    }
-
-    void MakeAlliesMove()
-    {
-        GameObject[] allies = GameObject.FindGameObjectsWithTag(tagName);
-        foreach (GameObject allie in allies)
-        {
-            allie.GetComponent<CharacterController>().StartMovement();
-        }
+        //TODO
     }
 
     void UpdateMovement()
@@ -83,27 +66,23 @@ public class CharacterController : MonoBehaviour
 
     private void CheckClosestCharacterDistance()
     {
-        GameObject closestCharacter = GetClosestCharacter();
+        GameObject closestCharacterInFront = GetClosestCharacterInFront();
 
-        if (closestCharacter)
+        if (closestCharacterInFront)
         {
-            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacter.transform.position));
-            print(distanceToCharacter);
+            float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacterInFront.transform.position));
             if (distanceToCharacter <= 4f)
             {
-                if (IsFirstOfTheRow(gameObject))
-                {
-                    if (closestCharacter.tag == EnemyController.tagName)
-                    {
-                        enemyTarget = closestCharacter;
-                    }
-                }
                 StopMovement();
             }
-            else if (distanceToCharacter > 4f && !isStopped)
+            else if (distanceToCharacter > 4.5f && isStopped)
             {
                 StartMovement();
             }
+        }
+        else if(!closestCharacterInFront && isStopped)
+        {
+            StartMovement();
         }
     }
 
@@ -119,7 +98,7 @@ public class CharacterController : MonoBehaviour
         animator.Play("Walk");
     }
 
-    public GameObject GetClosestCharacter()
+    public GameObject GetClosestCharacterInFront()
     {
         List<GameObject> gameCharacters = GetGameCharacters();
         GameObject closestCharacter = null;
@@ -131,8 +110,9 @@ public class CharacterController : MonoBehaviour
             {
                 if (character != this.gameObject)
                 {
-                    float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, character.transform.position));
-                    if (distanceToCharacter < closestDistance)
+                    float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
+                    bool isBehind = transform.position.x > character.transform.position.x;
+                    if (distanceToCharacter < closestDistance  && !isBehind)
                     {
                         closestDistance = distanceToCharacter;
                         closestCharacter = character;
@@ -153,11 +133,6 @@ public class CharacterController : MonoBehaviour
         return gameCharaters;
     }
 
-    public GameObject GetFirstCharacterOfTheRow()
-    {
-        return GameObject.FindGameObjectsWithTag(tagName)[0];
-    }
-
     void UpdateRotation()
     {
         Vector3 direction = waypointTarget.position - transform.position;
@@ -175,16 +150,5 @@ public class CharacterController : MonoBehaviour
     private bool HasEnnemyTarget()
     {
         return enemyTarget != null;
-    }
-
-    public bool IsFirstOfTheRow(GameObject character)
-    {
-        return character == GetFirstCharacterOfTheRow();
-    }
-
-    private void DeleteEnemyTarget()
-    {
-        enemyTarget = null;
-        isStopped = false;
     }
 }
