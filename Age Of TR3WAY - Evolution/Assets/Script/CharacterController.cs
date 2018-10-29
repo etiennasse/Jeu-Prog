@@ -1,34 +1,53 @@
-﻿using System;
+﻿ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
 
     public float speed = 5f;
     public float turnSpeed = 14f;
+    public float range = 4f;
+
+    public const float START_HEALTH = 100f;
+    private float health;
+
+    private float attackDelay = 1.25f;
+    private float attackTimer = 1.25f;
+    public GameObject attackObject;
+    public float attackDamage = 25f;
+
+    private float deathTimer = 1.7f;
+    private float deathTime = 0f;
 
     private Transform waypointTarget;
     private GameObject target;
+    private Animator animator;
+    public Image imageHealth;
+
     private int waypointIndex;
     private bool isStopped = false;
     public static string tagName = "Allies";
-    Animator animator;
 
     void Start()
     {
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
         animator = GetComponent<Animator>();
         animator.Play("Walk");
+        health = START_HEALTH;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (HasTarget())
+        if (HasTarget() && IsAlive())
         {
             AttackTarget();
+        }
+        else if (!IsAlive())
+        {
+            UpdateDeath();
         }
         else
         {
@@ -38,7 +57,63 @@ public class CharacterController : MonoBehaviour
 
     void AttackTarget()
     {
-        //TODO
+        if (CanAttack())
+        {
+            attackTimer = 0f;
+            PerformAttack();
+        }
+        else
+        {
+            attackTimer += Time.deltaTime;
+        }
+    }
+
+    private void PerformAttack()
+    {
+        EnemyController ennemy = target.GetComponent<EnemyController>();
+        if (attackObject != null && ennemy.IsAlive())
+        {
+            animator.Play("Right Throw");
+            GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
+            rangeAttackObject.transform.Translate(new Vector3(0, 0, 3f));
+            rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+        }
+        else if (ennemy.IsAlive())
+        {
+            animator.Play("Melee Right Attack 01");
+            ennemy.DealDamage(this.attackDamage);
+        }
+        else
+        {
+            attackTimer = 1.25f;
+            target = null;
+        }
+    }
+
+    public void DealDamage(float damage)
+    { 
+        this.health -= damage;
+        imageHealth.fillAmount = health / START_HEALTH;
+        if (!IsAlive())
+        {
+            this.Die();
+        }
+    }
+
+    public void UpdateDeath()
+    {
+        if (deathTime <= deathTimer)
+        {
+            deathTime += Time.deltaTime;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void Die() {
+        animator.Play("Die");
     }
 
     void UpdateMovement()
@@ -64,15 +139,33 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void AddTargetIfInRange(GameObject character, float distance)
+    {
+        if (distance <= range)
+        {
+            target = character;
+        }
+    }
+
     private void CheckClosestCharacterDistance()
     {
         GameObject closestCharacterInFront = GetClosestCharacterInFront();
+        GameObject closestTargetInFront = GetClosestTargetInFront();
+        float distanceToClosestTargetInFront = 0f;
 
         if (closestCharacterInFront)
         {
             float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, closestCharacterInFront.transform.position));
+            if (closestTargetInFront)
+                distanceToClosestTargetInFront = Mathf.Abs(Vector3.Distance(transform.position, closestTargetInFront.transform.position));
+
             if (distanceToCharacter <= 4f)
             {
+                if (closestTargetInFront)
+                {
+                    if (closestTargetInFront.tag != tagName)
+                        AddTargetIfInRange(closestTargetInFront, distanceToClosestTargetInFront);
+                }
                 StopMovement();
             }
             else if (distanceToCharacter > 4.5f && isStopped)
@@ -96,6 +189,31 @@ public class CharacterController : MonoBehaviour
     {
         isStopped = false;
         animator.Play("Walk");
+    }
+
+    public GameObject GetClosestTargetInFront()
+    {
+        List<GameObject> gameCharacters = GetGameCharacters();
+        GameObject closestCharacter = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject character in gameCharacters)
+        {
+            if (character != null)
+            {
+                if (character != this.gameObject && character.tag != tagName)
+                {
+                    float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
+                    bool isBehind = transform.position.x > character.transform.position.x;
+                    if (distanceToCharacter < closestDistance && !isBehind)
+                    {
+                        closestDistance = distanceToCharacter;
+                        closestCharacter = character;
+                    }
+                }
+            }
+        }
+        return closestCharacter;
     }
 
     public GameObject GetClosestCharacterInFront()
@@ -150,5 +268,15 @@ public class CharacterController : MonoBehaviour
     private bool HasTarget()
     {
         return target != null;
+    }
+
+    private bool CanAttack()
+    {
+        return attackTimer >= attackDelay;
+    }
+
+    public bool IsAlive()
+    {
+        return this.health > 0;
     }
 }
