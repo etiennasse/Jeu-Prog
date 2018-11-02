@@ -953,7 +953,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 129.10422, y: -0.099998474, z: 203.02377}
+  m_LocalPosition: {x: 56.59846, y: -0.099998474, z: 204.07523}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 434880}
@@ -1733,7 +1733,8 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 7
   range: 10
-  attackObject: {fileID: 126786, guid: 921bea1c9c87d57429bd8a3b36022ff2, type: 2}
+  attackObject: {fileID: 1953284194819320, guid: 60b2298603f701f4e9a5a2957f3d8ff1,
+    type: 2}
   attackDamage: 25
   imageHealth: {fileID: 114017567164371760}
 --- !u!136 &136011850792974546

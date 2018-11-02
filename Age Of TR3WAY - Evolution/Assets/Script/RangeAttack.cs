@@ -22,7 +22,7 @@ public class RangeAttack : MonoBehaviour {
             return;
         }
 
-        Vector3 direction = target.transform.position - transform.position + new Vector3(0, 3f, 0);
+        Vector3 direction = target.transform.position - transform.position + new Vector3(0, 2f, 0f);
         float distance = speed * Time.deltaTime;
 
         if (direction.magnitude <= distance)
@@ -31,14 +31,21 @@ public class RangeAttack : MonoBehaviour {
             return;
         }
 
-        transform.Rotate(new Vector3(15f, 15f, 0));
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, 0);
         transform.Translate(direction.normalized * distance, Space.World);
     }
 
     private void HitTarget()
     {
-        EnemyController enemy = target.GetComponent<EnemyController>();
-        enemy.DealDamage(this.attackDamage);
+        if(target.tag == EnemyController.tagName) {
+            EnemyController enemy = target.GetComponent<EnemyController>();
+            enemy.DealDamage(this.attackDamage);
+        }
+        else
+        {
+            CharacterController allie = target.GetComponent<CharacterController>();
+            allie.DealDamage(this.attackDamage);
+        }
         Destroy(this.gameObject);
     }
 }

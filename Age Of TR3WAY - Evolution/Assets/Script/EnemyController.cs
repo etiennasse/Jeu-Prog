@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour {
         {
             animator.Play("Right Throw");
             GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
-            rangeAttackObject.transform.Translate(new Vector3(0, 0, 3f));
+            rangeAttackObject.transform.Translate(new Vector3(0, 2f, 0f));
             rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
         }
         else if (ennemy.IsAlive())
