@@ -31,6 +31,8 @@ public class CharacterController : MonoBehaviour
     private bool isStopped = false;
     public static string tagName = "Allies";
 
+    public ParticleSystem ps;
+
     void Start()
     {
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
@@ -108,6 +110,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            Instantiate(ps, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

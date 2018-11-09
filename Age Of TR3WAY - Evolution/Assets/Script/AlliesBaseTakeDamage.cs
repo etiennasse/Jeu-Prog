@@ -10,9 +10,18 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
     private float health;
     public float waitTime = 1f;
     float timer;
+
+  
+    public GameObject Base25;
+    public GameObject Base50;
+    public GameObject Base75;
+    public GameObject Base100;
+    private GameObject currentBasePrefab;
+
     // Use this for initialization
     void Start () {
         health = startHealth;
+        currentBasePrefab = Instantiate(Base100, new Vector3(10, 0, 205), Base100.transform.rotation);
     }
 	
 	// Update is called once per frame
@@ -33,6 +42,22 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
 
         imageHealth.fillAmount = health / startHealth;
 
+        if (health <= 3750 && health > 2500 && currentBasePrefab != Base75)
+        {
+            Destroy(currentBasePrefab);
+            currentBasePrefab = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
+        }
+        else if (health <= 2500 && health > 1250 && currentBasePrefab != Base50)
+        {
+            Destroy(currentBasePrefab);
+            currentBasePrefab = Instantiate(Base50, new Vector3(10, 0, 205), Base50.transform.rotation);
+        }
+        else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
+        {
+            Destroy(currentBasePrefab);
+            currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
+        }
+
         if (CharacterIsDead())
         {
             Die();
@@ -42,6 +67,7 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
 
     public void Die()
     {
+        Destroy(currentBasePrefab);
         Destroy(gameObject, 1.7f);
     }
 

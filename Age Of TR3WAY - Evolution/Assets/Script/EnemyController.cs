@@ -31,6 +31,8 @@ public class EnemyController : MonoBehaviour {
 
     public static string tagName = "Enemy";
 
+    public ParticleSystem ps;
+
 
     void Start()
     {
@@ -109,6 +111,7 @@ public class EnemyController : MonoBehaviour {
         }
         else
         {
+            Instantiate(ps, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
