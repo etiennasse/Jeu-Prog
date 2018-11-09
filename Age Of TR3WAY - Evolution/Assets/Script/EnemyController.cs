@@ -44,7 +44,8 @@ public class EnemyController : MonoBehaviour {
     {
         if (HasTarget() && IsAlive())
         {
-            AttackTarget();
+            CharacterController ennemy = target.GetComponent<CharacterController>();
+            Attack(ennemy);
         }
         else if (!IsAlive())
         {
@@ -56,22 +57,24 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void AttackTarget()
+    void Attack(CharacterController ennemy)
     {
         if (CanAttack())
         {
             attackTimer = 0f;
-            PerformAttack();
+            PerformAttack(ennemy);
         }
         else
         {
             attackTimer += Time.deltaTime;
         }
+
+        if (ennemy.IsAlive())
+            UpdateRotation(ennemy.transform);
     }
 
-    private void PerformAttack()
+    private void PerformAttack(CharacterController ennemy)
     {
-        CharacterController ennemy = target.GetComponent<CharacterController>();
         if (attackObject != null && ennemy.IsAlive())
         {
             animator.Play("Right Throw");
@@ -132,7 +135,7 @@ public class EnemyController : MonoBehaviour {
         Vector3 direction = waypointTarget.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-        UpdateRotation();
+        UpdateRotation(waypointTarget.transform);
 
         if (Vector3.Distance(transform.position, waypointTarget.position) <= .2f)
         {
@@ -242,9 +245,9 @@ public class EnemyController : MonoBehaviour {
         return closestCharacter;
     }
 
-    void UpdateRotation()
+    void UpdateRotation(Transform rotateTarget)
     {
-        Vector3 direction = waypointTarget.position - transform.position;
+        Vector3 direction = rotateTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);

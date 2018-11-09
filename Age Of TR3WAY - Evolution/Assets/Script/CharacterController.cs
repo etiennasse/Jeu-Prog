@@ -11,7 +11,7 @@ public class CharacterController : MonoBehaviour
     public float turnSpeed = 14f;
     public float range = 4f;
 
-    public const float START_HEALTH = 100f;
+    public float START_HEALTH = 100f;
     private float health;
 
     private float attackDelay = 1.25f;
@@ -43,7 +43,8 @@ public class CharacterController : MonoBehaviour
     {
         if (HasTarget() && IsAlive())
         {
-            AttackTarget();
+            EnemyController ennemy = target.GetComponent<EnemyController>();
+            Attack(ennemy);
         }
         else if (!IsAlive())
         {
@@ -55,22 +56,24 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void AttackTarget()
+    void Attack(EnemyController ennemy)
     {
         if (CanAttack())
         {
             attackTimer = 0f;
-            PerformAttack();
+            PerformAttack(ennemy);
         }
         else
         {
             attackTimer += Time.deltaTime;
         }
+
+        if(ennemy.IsAlive())
+            UpdateRotation(ennemy.transform);
     }
 
-    private void PerformAttack()
+    private void PerformAttack(EnemyController ennemy)
     {
-        EnemyController ennemy = target.GetComponent<EnemyController>();
         if (attackObject != null && ennemy.IsAlive())
         {
             animator.Play("Right Throw");
@@ -130,7 +133,7 @@ public class CharacterController : MonoBehaviour
         Vector3 direction = waypointTarget.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-        UpdateRotation();
+        UpdateRotation(waypointTarget.transform);
 
         if (Vector3.Distance(transform.position, waypointTarget.position) <= .2f)
         {
@@ -251,9 +254,9 @@ public class CharacterController : MonoBehaviour
         return gameCharaters;
     }
 
-    void UpdateRotation()
+    void UpdateRotation(Transform rotateTarget)
     {
-        Vector3 direction = waypointTarget.position - transform.position;
+        Vector3 direction = rotateTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -267,7 +270,7 @@ public class CharacterController : MonoBehaviour
 
     private bool HasTarget()
     {
-        return target != null;
+        return this.target != null;
     }
 
     private bool CanAttack()
