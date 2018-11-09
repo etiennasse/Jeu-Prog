@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour {
     private bool isStopped = false;
 
     public static string tagName = "Enemy";
-
+    public const string BASE_NAME = "EnemiesBase";
 
     void Start()
     {
@@ -44,8 +44,7 @@ public class EnemyController : MonoBehaviour {
     {
         if (HasTarget() && IsAlive())
         {
-            CharacterController ennemy = target.GetComponent<CharacterController>();
-            Attack(ennemy);
+            ResolveAttack();
         }
         else if (!IsAlive())
         {
@@ -57,12 +56,60 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void Attack(CharacterController ennemy)
+    private void ResolveAttack()
+    {
+        if (target.tag == "Allies")
+        {
+            CharacterController ennemy = target.GetComponent<CharacterController>();
+            AttackEnnemy(ennemy);
+        }
+        else if (target.tag == "AlliesBase")
+        {
+            AttackBase();
+        }
+    }
+
+    private void AttackBase()
     {
         if (CanAttack())
         {
             attackTimer = 0f;
-            PerformAttack(ennemy);
+            PerformAttackOnBase();
+        }
+        else
+        {
+            attackTimer += Time.deltaTime;
+        }
+    }
+
+    private void PerformAttackOnBase()
+    {
+        BaseHealth _base = target.GetComponent<BaseHealth>();
+        if (attackObject != null && !_base.IsDead())
+        {
+            animator.Play("Right Throw");
+            GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
+            rangeAttackObject.transform.Translate(new Vector3(0, 3f, 0));
+            rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+        }
+        else if (!_base.IsDead())
+        {
+            animator.Play("Melee Right Attack 01");
+            _base.TakeDamage(this.attackDamage);
+        }
+        else
+        {
+            attackTimer = 1.25f;
+            target = null;
+        }
+    }
+
+    private void AttackEnnemy(CharacterController ennemy)
+    {
+        if (CanAttack())
+        {
+            attackTimer = 0f;
+            PerformAttackOnEnnemy(ennemy);
         }
         else
         {
@@ -73,9 +120,9 @@ public class EnemyController : MonoBehaviour {
             UpdateRotation(ennemy.transform);
     }
 
-    private void PerformAttack(CharacterController ennemy)
+    private void PerformAttackOnEnnemy(CharacterController ennemy)
     {
-        if (attackObject != null && ennemy.IsAlive())
+        if (attackObject != null && !ennemy.IsAlive())
         {
             animator.Play("Right Throw");
             GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
@@ -206,7 +253,7 @@ public class EnemyController : MonoBehaviour {
         {
             if (character != null)
             {
-                if (character != this.gameObject && character.tag != tagName)
+                if (character != this.gameObject && character.tag != tagName && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
                     bool isBehind = transform.position.x < character.transform.position.x;
@@ -230,7 +277,7 @@ public class EnemyController : MonoBehaviour {
         {
             if (character != null)
             {
-                if (character != this.gameObject)
+                if (character != this.gameObject && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, character.transform.position));
                     bool isBehind = transform.position.x < character.transform.position.x;
@@ -260,6 +307,8 @@ public class EnemyController : MonoBehaviour {
         List<GameObject> gameCharaters = new List<GameObject>();
         gameCharaters.AddRange(enemies);
         gameCharaters.AddRange(allies);
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("EnemiesBase"));
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("AlliesBase"));
         return gameCharaters;
     }
 

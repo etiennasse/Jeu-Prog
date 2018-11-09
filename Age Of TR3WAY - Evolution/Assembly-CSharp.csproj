@@ -61,7 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\AlliesBaseTakeDamage.cs" />
+    <Compile Include="Assets\Script\BaseHealth.cs" />
     <Compile Include="Assets\Script\Button2.cs" />
     <Compile Include="Assets\Script\Button3.cs" />
     <Compile Include="Assets\Script\ButtonController.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Assets\Script\CharacterController.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\EnemySpawnController.cs" />
+    <Compile Include="Assets\Script\EnnemyBaseHealth.cs" />
     <Compile Include="Assets\Script\FaceCamera.cs" />
     <Compile Include="Assets\Script\MusicPlayer.cs" />
     <Compile Include="Assets\Script\RangeAttack.cs" />
