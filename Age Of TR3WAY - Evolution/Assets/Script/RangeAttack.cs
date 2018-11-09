@@ -41,6 +41,11 @@ public class RangeAttack : MonoBehaviour {
             EnemyController enemy = target.GetComponent<EnemyController>();
             enemy.DealDamage(this.attackDamage);
         }
+        else if(target.tag == "EnemiesBase" || target.tag == "AlliesBase")
+        {
+            BaseHealth _base = target.GetComponent<BaseHealth>();
+            _base.TakeDamage(this.attackDamage);
+        }
         else
         {
             CharacterController allie = target.GetComponent<CharacterController>();
