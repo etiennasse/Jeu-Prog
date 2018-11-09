@@ -58,7 +58,7 @@ public class CharacterController : MonoBehaviour
 
     private void ResolveAttack()
     {
-        if (target.tag == "Ennemies")
+        if (target.tag == "Enemy")
         {
             EnemyController ennemy = target.GetComponent<EnemyController>();
             AttackEnnemy(ennemy);
