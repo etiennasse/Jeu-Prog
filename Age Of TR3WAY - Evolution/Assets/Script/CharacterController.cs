@@ -26,6 +26,7 @@ public class CharacterController : MonoBehaviour
     private GameObject target;
     private Animator animator;
     public Image imageHealth;
+    private AudioSource audioSource;
 
     private int waypointIndex;
     private bool isStopped = false;
@@ -38,6 +39,7 @@ public class CharacterController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.Play("Walk");
         health = START_HEALTH;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class CharacterController : MonoBehaviour
         {
             attackTimer = 0f;
             PerformAttackOnBase();
+            audioSource.Play();
         }
         else
         {
@@ -111,6 +114,7 @@ public class CharacterController : MonoBehaviour
         {
             attackTimer = 0f;
             PerformAttackOnEnnemy(ennemy);
+            audioSource.Play();
         }
         else
         {
