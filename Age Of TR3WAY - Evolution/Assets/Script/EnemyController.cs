@@ -32,6 +32,8 @@ public class EnemyController : MonoBehaviour {
     public static string tagName = "Enemy";
     public const string BASE_NAME = "EnemiesBase";
 
+    public int moneyReward = 1000;
+
     void Start()
     {
         waypointTarget = WaypointController.ennemyWaypoints[waypointIndex];
@@ -166,6 +168,7 @@ public class EnemyController : MonoBehaviour {
     private void Die()
     {
         animator.Play("Die");
+        GameController.AddMoney(this.moneyReward);
     }
 
     void UpdateMovement()

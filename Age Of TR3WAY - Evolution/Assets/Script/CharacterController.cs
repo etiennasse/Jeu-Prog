@@ -32,6 +32,8 @@ public class CharacterController : MonoBehaviour
     public static string tagName = "Allies";
     public const string BASE_NAME = "AlliesBase";
 
+    public int cost = 500;
+
     void Start()
     {
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
