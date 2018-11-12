@@ -32,19 +32,11 @@ public class BaseHealth : MonoBehaviour {
         {
             Destroy(currentBasePrefab);
             currentBasePrefab = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
-        }        else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
         }
         else if (health <= 2500 && health > 1250 && currentBasePrefab != Base50)
         {
             Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base5        else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
-        }0, new Vector3(10, 0, 205), Base50.transform.rotation);
+            currentBasePrefab = Instantiate(Base50, new Vector3(10, 0, 205), Base50.transform.rotation);
         }
         else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
         {
@@ -53,7 +45,6 @@ public class BaseHealth : MonoBehaviour {
         }
         else if (health <= 0 && currentBasePrefab != Base0)
         {
-            print("test000");
             Destroy(currentBasePrefab);
             currentBasePrefab = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
         }
@@ -66,11 +57,7 @@ public class BaseHealth : MonoBehaviour {
     }
 
     private void Die()
-    {        else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
-        }
+    {       
         Destroy(gameObject, 1.7f);
     }
 
