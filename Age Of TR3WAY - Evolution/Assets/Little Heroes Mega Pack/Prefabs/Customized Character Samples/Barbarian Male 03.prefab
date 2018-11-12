@@ -1737,6 +1737,7 @@ MonoBehaviour:
     type: 2}
   attackDamage: 25
   imageHealth: {fileID: 114017567164371760}
+  ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
 --- !u!136 &136011850792974546
 CapsuleCollider:
   m_ObjectHideFlags: 1

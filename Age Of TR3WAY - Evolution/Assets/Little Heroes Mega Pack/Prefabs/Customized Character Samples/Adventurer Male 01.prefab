@@ -1647,6 +1647,7 @@ MonoBehaviour:
   attackObject: {fileID: 0}
   attackDamage: 25
   imageHealth: {fileID: 114169665487769468}
+  ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
 --- !u!114 &114516501890196136
 MonoBehaviour:
   m_ObjectHideFlags: 1

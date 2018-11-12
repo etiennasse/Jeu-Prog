@@ -16662,7 +16662,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 14
+  range: 4
+  attackObject: {fileID: 0}
+  attackDamage: 25
   imageHealth: {fileID: 114867232202469644}
+  ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
 --- !u!114 &114867232202469644
 MonoBehaviour:
   m_ObjectHideFlags: 1

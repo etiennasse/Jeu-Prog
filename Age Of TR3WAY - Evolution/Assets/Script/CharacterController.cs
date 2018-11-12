@@ -34,6 +34,8 @@ public class CharacterController : MonoBehaviour
 
     public int cost = 500;
 
+    public ParticleSystem ps;
+
     void Start()
     {
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
@@ -162,6 +164,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            Instantiate(ps, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

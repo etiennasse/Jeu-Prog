@@ -17816,6 +17816,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageHealth: {fileID: 166541689}
   startHealth: 5000
+  Base0: {fileID: 1384465870866594, guid: 8e4a9b48aa0a15f4eb53660674663063, type: 2}
+  Base25: {fileID: 1433071274835976, guid: f7ccd04f2c6a9b74bb1578eec9b73ad3, type: 2}
+  Base50: {fileID: 1871134232483882, guid: f03cb8be93d9f824a98c425a7a75b3f1, type: 2}
+  Base75: {fileID: 1661869051311490, guid: a3ca609221cc4e94e8f4fc30669b6c88, type: 2}
+  Base100: {fileID: 1776129940715728, guid: ed02c860550693b469c9993a9ba510d9, type: 2}
 --- !u!65 &795379983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36109,6 +36114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageHealth: {fileID: 2009173650}
   startHealth: 5000
+  Base0: {fileID: 0}
+  Base25: {fileID: 0}
+  Base50: {fileID: 0}
+  Base75: {fileID: 0}
+  Base100: {fileID: 0}
 --- !u!4 &1736593341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420324, guid: fe1ed406c4cb39f428a31bfe333b2301,
