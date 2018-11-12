@@ -11,7 +11,7 @@ public class CharacterController : MonoBehaviour
     public float turnSpeed = 14f;
     public float range = 4f;
 
-    public const float START_HEALTH = 100f;
+    public float START_HEALTH = 100f;
     private float health;
 
     private float attackDelay = 1.25f;
@@ -30,6 +30,9 @@ public class CharacterController : MonoBehaviour
     private int waypointIndex;
     private bool isStopped = false;
     public static string tagName = "Allies";
+    public const string BASE_NAME = "AlliesBase";
+
+    public int cost = 500;
 
     public ParticleSystem ps;
 
@@ -45,7 +48,7 @@ public class CharacterController : MonoBehaviour
     {
         if (HasTarget() && IsAlive())
         {
-            AttackTarget();
+            ResolveAttack();
         }
         else if (!IsAlive())
         {
@@ -57,12 +60,26 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void AttackTarget()
+    private void ResolveAttack()
+    {
+        if (target.tag == "Enemy")
+        {
+            EnemyController ennemy = target.GetComponent<EnemyController>();
+            AttackEnnemy(ennemy);
+        }
+        else if (target.tag == "EnemiesBase")
+        {
+
+            AttackBase();
+        }
+    }
+
+    private void AttackBase()
     {
         if (CanAttack())
         {
             attackTimer = 0f;
-            PerformAttack();
+            PerformAttackOnBase();
         }
         else
         {
@@ -70,9 +87,46 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    private void PerformAttack()
+    private void PerformAttackOnBase()
     {
-        EnemyController ennemy = target.GetComponent<EnemyController>();
+        BaseHealth _base = target.GetComponent<BaseHealth>();
+        if (attackObject != null && !_base.IsDead())
+        {
+            animator.Play("Right Throw");
+            GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
+            rangeAttackObject.transform.Translate(new Vector3(0, 3f, 0));
+            rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+        }
+        else if (!_base.IsDead())
+        {
+            animator.Play("Melee Right Attack 01");
+            _base.TakeDamage(this.attackDamage);
+        }
+        else
+        {
+            attackTimer = 1.25f;
+            target = null;
+        }
+    }
+
+    private void AttackEnnemy(EnemyController ennemy)
+    {
+        if (CanAttack())
+        {
+            attackTimer = 0f;
+            PerformAttackOnEnnemy(ennemy);
+        }
+        else
+        {
+            attackTimer += Time.deltaTime;
+        }
+
+        if(ennemy.IsAlive())
+            UpdateRotation(ennemy.transform);
+    }
+
+    private void PerformAttackOnEnnemy(EnemyController ennemy)
+    {
         if (attackObject != null && ennemy.IsAlive())
         {
             animator.Play("Right Throw");
@@ -133,7 +187,7 @@ public class CharacterController : MonoBehaviour
         Vector3 direction = waypointTarget.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-        UpdateRotation();
+        UpdateRotation(waypointTarget.transform);
 
         if (Vector3.Distance(transform.position, waypointTarget.position) <= .2f)
         {
@@ -204,7 +258,7 @@ public class CharacterController : MonoBehaviour
         {
             if (character != null)
             {
-                if (character != this.gameObject && character.tag != tagName)
+                if (character != this.gameObject && character.tag != tagName && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
                     bool isBehind = transform.position.x > character.transform.position.x;
@@ -229,7 +283,7 @@ public class CharacterController : MonoBehaviour
         {
             if (character != null)
             {
-                if (character != this.gameObject)
+                if (character != this.gameObject && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
                     bool isBehind = transform.position.x > character.transform.position.x;
@@ -247,16 +301,18 @@ public class CharacterController : MonoBehaviour
     public List<GameObject> GetGameCharacters()
     {
         List<GameObject> enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag(EnemyController.tagName));
-        List<GameObject> allies = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName)); ;
+        List<GameObject> allies = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName));
         List<GameObject> gameCharaters = new List<GameObject>();
         gameCharaters.AddRange(enemies);
         gameCharaters.AddRange(allies);
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("EnemiesBase"));
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("AlliesBase"));
         return gameCharaters;
     }
 
-    void UpdateRotation()
+    void UpdateRotation(Transform rotateTarget)
     {
-        Vector3 direction = waypointTarget.position - transform.position;
+        Vector3 direction = rotateTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -270,7 +326,7 @@ public class CharacterController : MonoBehaviour
 
     private bool HasTarget()
     {
-        return target != null;
+        return this.target != null;
     }
 
     private bool CanAttack()

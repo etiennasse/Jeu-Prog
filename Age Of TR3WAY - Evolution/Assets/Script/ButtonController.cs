@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,9 +58,19 @@ public class ButtonController : MonoBehaviour {
     {
         if (!isCoolingDown)
         {
-            Quaternion rot = Quaternion.Euler(0, 90, 0);
-            Instantiate(prefab, spawnPoint.transform.position, rot);
-            StartTimer();
+            CharacterController character = prefab.GetComponent<CharacterController>();
+            int cost = character.cost;
+            try
+            {
+                GameController.TakeMoney(cost);
+                Quaternion rot = Quaternion.Euler(0, 90, 0);
+                Instantiate(prefab, spawnPoint.transform.position, rot);
+                StartTimer();
+            }
+            catch(Exception e)
+            {
+                print(e.Message);
+            }
         }
     }
 }

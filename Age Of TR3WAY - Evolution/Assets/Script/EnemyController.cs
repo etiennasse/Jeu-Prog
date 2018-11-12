@@ -30,8 +30,10 @@ public class EnemyController : MonoBehaviour {
     private bool isStopped = false;
 
     public static string tagName = "Enemy";
+    public const string BASE_NAME = "EnemiesBase";
 
     public ParticleSystem ps;
+    public int moneyReward = 1000;
 
 
     void Start()
@@ -46,7 +48,7 @@ public class EnemyController : MonoBehaviour {
     {
         if (HasTarget() && IsAlive())
         {
-            AttackTarget();
+            ResolveAttack();
         }
         else if (!IsAlive())
         {
@@ -58,12 +60,25 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void AttackTarget()
+    private void ResolveAttack()
+    {
+        if (target.tag == "Allies")
+        {
+            CharacterController ennemy = target.GetComponent<CharacterController>();
+            AttackEnnemy(ennemy);
+        }
+        else if (target.tag == "AlliesBase")
+        {
+            AttackBase();
+        }
+    }
+
+    private void AttackBase()
     {
         if (CanAttack())
         {
             attackTimer = 0f;
-            PerformAttack();
+            PerformAttackOnBase();
         }
         else
         {
@@ -71,10 +86,47 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    private void PerformAttack()
+    private void PerformAttackOnBase()
     {
-        CharacterController ennemy = target.GetComponent<CharacterController>();
-        if (attackObject != null && ennemy.IsAlive())
+        BaseHealth _base = target.GetComponent<BaseHealth>();
+        if (attackObject != null && !_base.IsDead())
+        {
+            animator.Play("Right Throw");
+            GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
+            rangeAttackObject.transform.Translate(new Vector3(0, 3f, 0));
+            rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+        }
+        else if (!_base.IsDead())
+        {
+            animator.Play("Melee Right Attack 01");
+            _base.TakeDamage(this.attackDamage);
+        }
+        else
+        {
+            attackTimer = 1.25f;
+            target = null;
+        }
+    }
+
+    private void AttackEnnemy(CharacterController ennemy)
+    {
+        if (CanAttack())
+        {
+            attackTimer = 0f;
+            PerformAttackOnEnnemy(ennemy);
+        }
+        else
+        {
+            attackTimer += Time.deltaTime;
+        }
+
+        if (ennemy.IsAlive())
+            UpdateRotation(ennemy.transform);
+    }
+
+    private void PerformAttackOnEnnemy(CharacterController ennemy)
+    {
+        if (attackObject != null && !ennemy.IsAlive())
         {
             animator.Play("Right Throw");
             GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
@@ -119,6 +171,7 @@ public class EnemyController : MonoBehaviour {
     private void Die()
     {
         animator.Play("Die");
+        GameController.AddMoney(this.moneyReward);
     }
 
     void UpdateMovement()
@@ -135,7 +188,7 @@ public class EnemyController : MonoBehaviour {
         Vector3 direction = waypointTarget.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
-        UpdateRotation();
+        UpdateRotation(waypointTarget.transform);
 
         if (Vector3.Distance(transform.position, waypointTarget.position) <= .2f)
         {
@@ -206,7 +259,7 @@ public class EnemyController : MonoBehaviour {
         {
             if (character != null)
             {
-                if (character != this.gameObject && character.tag != tagName)
+                if (character != this.gameObject && character.tag != tagName && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Vector3.Distance(transform.position, character.transform.position);
                     bool isBehind = transform.position.x < character.transform.position.x;
@@ -230,7 +283,7 @@ public class EnemyController : MonoBehaviour {
         {
             if (character != null)
             {
-                if (character != this.gameObject)
+                if (character != this.gameObject && character.tag != BASE_NAME)
                 {
                     float distanceToCharacter = Mathf.Abs(Vector3.Distance(transform.position, character.transform.position));
                     bool isBehind = transform.position.x < character.transform.position.x;
@@ -245,9 +298,9 @@ public class EnemyController : MonoBehaviour {
         return closestCharacter;
     }
 
-    void UpdateRotation()
+    void UpdateRotation(Transform rotateTarget)
     {
-        Vector3 direction = waypointTarget.position - transform.position;
+        Vector3 direction = rotateTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(direction);
         Vector3 rotation = Quaternion.LerpUnclamped(this.transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         this.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -260,6 +313,8 @@ public class EnemyController : MonoBehaviour {
         List<GameObject> gameCharaters = new List<GameObject>();
         gameCharaters.AddRange(enemies);
         gameCharaters.AddRange(allies);
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("EnemiesBase"));
+        gameCharaters.Add(GameObject.FindGameObjectWithTag("AlliesBase"));
         return gameCharaters;
     }
 
