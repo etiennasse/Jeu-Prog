@@ -11,7 +11,7 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
     public float waitTime = 1f;
     float timer;
 
-  
+    public GameObject Base0;
     public GameObject Base25;
     public GameObject Base50;
     public GameObject Base75;
@@ -57,6 +57,12 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
             Destroy(currentBasePrefab);
             currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
         }
+        else if (health <= 0 && currentBasePrefab != Base0)
+        {
+            print("test000");
+            Destroy(currentBasePrefab);
+            currentBasePrefab = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
+        }
 
         if (CharacterIsDead())
         {
@@ -67,7 +73,6 @@ public class AlliesBaseTakeDamage : MonoBehaviour {
 
     public void Die()
     {
-        Destroy(currentBasePrefab);
         Destroy(gameObject, 1.7f);
     }
 
