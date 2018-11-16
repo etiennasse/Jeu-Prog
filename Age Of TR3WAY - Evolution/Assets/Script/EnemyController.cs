@@ -25,6 +25,8 @@ public class EnemyController : MonoBehaviour {
     private GameObject target;
     private Animator animator;
     public Image imageHealth;
+    public AudioSource audioDie;
+    public AudioSource audioAttack;
 
     private int waypointIndex;
     private bool isStopped = false;
@@ -79,6 +81,7 @@ public class EnemyController : MonoBehaviour {
         {
             attackTimer = 0f;
             PerformAttackOnBase();
+            audioAttack.Play();
         }
         else
         {
@@ -114,6 +117,7 @@ public class EnemyController : MonoBehaviour {
         {
             attackTimer = 0f;
             PerformAttackOnEnnemy(ennemy);
+            audioAttack.Play();
         }
         else
         {
@@ -172,6 +176,10 @@ public class EnemyController : MonoBehaviour {
     {
         animator.Play("Die");
         GameController.AddMoney(this.moneyReward);
+        if (!audioDie.isPlaying)
+        {
+            audioDie.Play();
+        }
     }
 
     void UpdateMovement()
