@@ -26,7 +26,8 @@ public class CharacterController : MonoBehaviour
     private GameObject target;
     private Animator animator;
     public Image imageHealth;
-    private AudioSource audioSource;
+    public AudioSource audioDie;
+    public AudioSource audioAttack;
 
     private int waypointIndex;
     private bool isStopped = false;
@@ -39,7 +40,6 @@ public class CharacterController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.Play("Walk");
         health = START_HEALTH;
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -78,7 +78,7 @@ public class CharacterController : MonoBehaviour
         {
             attackTimer = 0f;
             PerformAttackOnBase();
-            audioSource.Play();
+            audioAttack.Play();
         }
         else
         {
@@ -114,7 +114,7 @@ public class CharacterController : MonoBehaviour
         {
             attackTimer = 0f;
             PerformAttackOnEnnemy(ennemy);
-            audioSource.Play();
+            audioAttack.Play();
         }
         else
         {
@@ -137,7 +137,7 @@ public class CharacterController : MonoBehaviour
         else if (ennemy.IsAlive())
         {
             animator.Play("Melee Right Attack 01");
-            ennemy.DealDamage(this.attackDamage);
+            ennemy.DealDamage(this.attackDamage);     
         }
         else
         {
@@ -170,6 +170,11 @@ public class CharacterController : MonoBehaviour
 
     private void Die() {
         animator.Play("Die");
+        if(!audioDie.isPlaying)
+        {
+            audioDie.Play();
+        }
+        
     }
 
     void UpdateMovement()
