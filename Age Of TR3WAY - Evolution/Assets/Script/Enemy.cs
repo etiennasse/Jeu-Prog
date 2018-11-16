@@ -140,7 +140,7 @@ public class Enemy : Character {
         else
         {
             GameController.AddMoney(rewardValue);
-            Instantiate(ps, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity);
+            Instantiate(ps, new Vector3(transform.position.x - 1, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

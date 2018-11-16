@@ -25,6 +25,8 @@ public class Character : MonoBehaviour {
     protected GameObject target;
     protected Animator animator;
     public Image imageHealth;
+    public AudioSource audioDie;
+    public AudioSource audioAttack;
 
     protected int waypointIndex;
     protected bool isStopped = false;
@@ -73,11 +75,13 @@ public class Character : MonoBehaviour {
             GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
             rangeAttackObject.transform.Translate(new Vector3(0, 3f, 0));
             rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+            audioAttack.Play();
         }
         else if (!_base.IsDead())
         {
             animator.Play("Melee Right Attack 01");
             _base.TakeDamage(this.attackDamage);
+            audioAttack.Play();
         }
         else
         {
@@ -110,11 +114,13 @@ public class Character : MonoBehaviour {
             GameObject rangeAttackObject = (GameObject)Instantiate(attackObject, this.transform);
             rangeAttackObject.transform.Translate(new Vector3(0, 3f, 0));
             rangeAttackObject.GetComponent<RangeAttack>().Seek(this.target, this.attackDamage);
+            audioAttack.Play();
         }
         else if (ennemy.IsAlive())
         {
             animator.Play("Melee Right Attack 01");
             ennemy.DealDamage(this.attackDamage);
+            audioAttack.Play();
         }
         else
         {
@@ -149,6 +155,10 @@ public class Character : MonoBehaviour {
     protected void Die()
     {
         animator.Play("Die");
+        if (!audioDie.isPlaying)
+        {
+            audioDie.Play();
+        }
     }
 
     void UpdateMovement()
