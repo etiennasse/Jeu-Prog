@@ -235,8 +235,8 @@ GameObject:
   m_Component:
   - component: {fileID: 442626}
   - component: {fileID: 9554782}
-  - component: {fileID: 114530630395834490}
   - component: {fileID: 54174729505810200}
+  - component: {fileID: 114363545956865030}
   - component: {fileID: 136766718863136322}
   m_Layer: 0
   m_Name: Sorceress Female 02
@@ -906,7 +906,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.492462, y: -0.099998474, z: 205.44327}
+  m_LocalPosition: {x: 175.7583, y: 3.9887834, z: 205.06445}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 499830}
@@ -10791,7 +10791,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114530630395834490
+--- !u!114 &114363545956865030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10799,17 +10799,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 137632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf1404337725a04f949b88f8eed6c90, type: 3}
+  m_Script: {fileID: 11500000, guid: a36efc29b70d6104db311a40edb16dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  turnSpeed: 7
-  range: 15
+  turnSpeed: 14
+  range: 8
+  startHealth: 100
   attackObject: {fileID: 1835209381465846, guid: ca35b5d6c9de19b4db95e5a11b5fd868,
     type: 2}
   attackDamage: 25
   imageHealth: {fileID: 114732338222946724}
   ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
+  cost: 500
 --- !u!114 &114625197040269740
 MonoBehaviour:
   m_ObjectHideFlags: 1

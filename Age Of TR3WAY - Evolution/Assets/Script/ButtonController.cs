@@ -12,7 +12,7 @@ public class ButtonController : MonoBehaviour {
 
     bool isCoolingDown = false;
     float coolDownTimer = 0f;
-    public float coolDownTime = 2f;
+    public const float COOL_DOWN_TIME = 2f;
 
     // Use this for initialization
     void Start () {
@@ -35,7 +35,7 @@ public class ButtonController : MonoBehaviour {
 
     public void CheckIfTimerIsOver()
     {
-        if(coolDownTimer >= coolDownTime)
+        if(coolDownTimer >= COOL_DOWN_TIME)
         {
             ResetTimer();
         }
@@ -58,7 +58,7 @@ public class ButtonController : MonoBehaviour {
     {
         if (!isCoolingDown)
         {
-            CharacterController character = prefab.GetComponent<CharacterController>();
+            Ally character = prefab.GetComponent<Ally>();
             int cost = character.cost;
             try
             {
