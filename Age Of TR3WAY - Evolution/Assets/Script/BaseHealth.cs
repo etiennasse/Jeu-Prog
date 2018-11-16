@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaseHealth : MonoBehaviour {
 
@@ -19,7 +20,7 @@ public class BaseHealth : MonoBehaviour {
 
     void Start () {
         health = startHealth;
-        currentBasePrefab = Instantiate(Base100, new Vector3(10, 0, 205), Base100.transform.rotation);
+        currentBasePrefab = Instantiate(Base100, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4, gameObject.transform.position.z), Base100.transform.rotation);
     }
 	
     public void TakeDamage(float amount)
@@ -57,7 +58,16 @@ public class BaseHealth : MonoBehaviour {
     }
 
     private void Die()
-    {       
+    {
+        print(currentBasePrefab.tag);
+        if (currentBasePrefab.tag == "EnemiesBase")
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (currentBasePrefab.tag == "AlliesBase")
+        {
+            SceneManager.LoadScene(2);
+        }
         Destroy(gameObject, 1.7f);
     }
 
