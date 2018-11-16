@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 9564102}
   - component: {fileID: 54961428934302524}
   - component: {fileID: 136826766678562188}
-  - component: {fileID: 114705861270504794}
+  - component: {fileID: 114693806747705172}
   m_Layer: 0
   m_Name: Guardian Female 01
   m_TagString: Enemy
@@ -1513,7 +1513,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.507591, y: -0.099998474, z: 204.31969}
+  m_LocalPosition: {x: 175.09996, y: 3.6224585, z: 204.33916}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 417462}
@@ -20492,7 +20492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f4c563c1fdc5e45ae4308b100b1428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114705861270504794
+--- !u!114 &114693806747705172
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20500,17 +20500,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 139232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf90471102c98714d82665d4074c8570, type: 3}
+  m_Script: {fileID: 11500000, guid: 482a44463652e244c94b62decfc04b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 14
-  range: 15
+  range: 4
+  startHealth: 100
   attackObject: {fileID: 1753122445732978, guid: 1748b462e4b4b9341b542551b4ec7b7b,
     type: 2}
   attackDamage: 25
   imageHealth: {fileID: 114739731522450060}
   ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
+  rewardValue: 1000
 --- !u!114 &114739731522450060
 MonoBehaviour:
   m_ObjectHideFlags: 1

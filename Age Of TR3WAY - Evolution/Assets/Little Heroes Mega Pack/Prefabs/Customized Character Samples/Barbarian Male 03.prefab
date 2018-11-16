@@ -587,8 +587,8 @@ GameObject:
   m_Component:
   - component: {fileID: 442712}
   - component: {fileID: 9559978}
-  - component: {fileID: 114992004762802104}
   - component: {fileID: 54903676252864436}
+  - component: {fileID: 114961329849644250}
   - component: {fileID: 136011850792974546}
   m_Layer: 0
   m_Name: Barbarian Male 03
@@ -953,7 +953,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 56.59846, y: -0.099998474, z: 204.07523}
+  m_LocalPosition: {x: 22.13, y: -0.099998474, z: 205.33932}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 434880}
@@ -1719,7 +1719,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114992004762802104
+--- !u!114 &114961329849644250
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1727,17 +1727,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 181198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bf1404337725a04f949b88f8eed6c90, type: 3}
+  m_Script: {fileID: 11500000, guid: a36efc29b70d6104db311a40edb16dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  turnSpeed: 7
-  range: 10
-  attackObject: {fileID: 1953284194819320, guid: 60b2298603f701f4e9a5a2957f3d8ff1,
-    type: 2}
+  turnSpeed: 14
+  range: 4
+  startHealth: 100
+  attackObject: {fileID: 0}
   attackDamage: 25
   imageHealth: {fileID: 114017567164371760}
-  ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
+  ps: {fileID: 0}
 --- !u!136 &136011850792974546
 CapsuleCollider:
   m_ObjectHideFlags: 1

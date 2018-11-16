@@ -2499,7 +2499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 181198, guid: ff7a35264c3106748859a2fd4b643fd8, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 1.5
 --- !u!114 &139503801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11750,7 +11749,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 104700, guid: e7b585eccc2ecfa4b8d8b705807b5ebe, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 0.7
 --- !u!114 &545553673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15082,7 +15080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0225, y: 0.828381}
   m_AnchorMax: {x: 0.24375, y: 0.89762855}
-  m_AnchoredPosition: {x: -2.1400146, y: 9.2599945}
+  m_AnchoredPosition: {x: -2.1400146, y: 9.26001}
   m_SizeDelta: {x: -4.3, y: -14.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679792678
@@ -40490,7 +40488,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 137632, guid: 620c054e3b294ce4b861615adadb6e8c, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 3
 --- !u!114 &1915000846
 MonoBehaviour:
   m_ObjectHideFlags: 0

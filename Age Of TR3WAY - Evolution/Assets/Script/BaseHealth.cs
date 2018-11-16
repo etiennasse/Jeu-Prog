@@ -9,51 +9,49 @@ public class BaseHealth : MonoBehaviour {
     public float startHealth = 5000;
     private float health;
 
-
     public GameObject Base0;
     public GameObject Base25;
     public GameObject Base50;
     public GameObject Base75;
     public GameObject Base100;
-    private GameObject currentBasePrefab;
+    private GameObject currentBaseObject;
 
     void Start () {
         health = startHealth;
-        currentBasePrefab = Instantiate(Base100, new Vector3(10, 0, 205), Base100.transform.rotation);
+        currentBaseObject = Instantiate(Base100, new Vector3(10, 0, 205), Base100.transform.rotation);
     }
 	
     public void TakeDamage(float amount)
     {
         health -= amount;
-
         imageHealth.fillAmount = health / startHealth;
 
-        if (health <= 3750 && health > 2500 && currentBasePrefab != Base75)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
-        }
-        else if (health <= 2500 && health > 1250 && currentBasePrefab != Base50)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base50, new Vector3(10, 0, 205), Base50.transform.rotation);
-        }
-        else if (health <= 1250 && health > 0 && currentBasePrefab != Base25)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
-        }
-        else if (health <= 0 && currentBasePrefab != Base0)
-        {
-            Destroy(currentBasePrefab);
-            currentBasePrefab = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
-        }
+        UpdateBaseState();
+    }
 
-        if (IsDead())
+    private void UpdateBaseState()
+    {
+        if (this.IsAt75Percent() && currentBaseObject != Base75)
         {
+            Destroy(currentBaseObject);
+            currentBaseObject = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
+        }
+        else if (this.IsAt50Percent() && currentBaseObject != Base50)
+        {
+            Destroy(currentBaseObject);
+            currentBaseObject = Instantiate(Base50, new Vector3(10, 0, 205), Base50.transform.rotation);
+        }
+        else if (this.IsAt25Percent() && currentBaseObject != Base25)
+        {
+            Destroy(currentBaseObject);
+            currentBaseObject = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
+        }
+        else if (this.IsDead() && currentBaseObject != Base0)
+        {
+            Destroy(currentBaseObject);
+            currentBaseObject = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
             Die();
         }
-
     }
 
     private void Die()
@@ -64,5 +62,20 @@ public class BaseHealth : MonoBehaviour {
     public bool IsDead()
     {
         return health <= 0;
+    }
+
+    public bool IsAt75Percent()
+    {
+        return health <= 3750 && health > 2500;
+    }
+
+    public bool IsAt50Percent()
+    {
+        return health <= 2500 && health > 1250;
+    }
+
+    public bool IsAt25Percent()
+    {
+        return health <= 1250 && health > 0;
     }
 }
