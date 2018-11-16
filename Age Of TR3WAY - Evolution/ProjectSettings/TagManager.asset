@@ -8,6 +8,7 @@ TagManager:
   - Allies
   - AlliesBase
   - EnemiesBase
+  - Money
   layers:
   - Default
   - TransparentFX

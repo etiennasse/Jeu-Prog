@@ -34,6 +34,10 @@ public class CharacterController : MonoBehaviour
     public static string tagName = "Allies";
     public const string BASE_NAME = "AlliesBase";
 
+    public int cost = 500;
+
+    public ParticleSystem ps;
+
     void Start()
     {
         waypointTarget = WaypointController.alliesWaypoints[waypointIndex];
@@ -164,6 +168,7 @@ public class CharacterController : MonoBehaviour
         }
         else
         {
+            Instantiate(ps, new Vector3(transform.position.x + 1, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

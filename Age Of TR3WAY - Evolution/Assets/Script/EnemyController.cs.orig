@@ -175,11 +175,14 @@ public class EnemyController : MonoBehaviour {
     private void Die()
     {
         animator.Play("Die");
-        GameController.AddMoney(this.moneyReward);
+<<<<<<< HEAD
         if (!audioDie.isPlaying)
         {
             audioDie.Play();
         }
+=======
+        GameController.AddMoney(this.moneyReward);
+>>>>>>> master
     }
 
     void UpdateMovement()
