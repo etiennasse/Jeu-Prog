@@ -2875,8 +2875,8 @@ Transform:
   - {fileID: 1428583952}
   - {fileID: 261290689}
   - {fileID: 795379981}
-  - {fileID: 664779406}
   - {fileID: 1735906914}
+  - {fileID: 664779406}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3469,6 +3469,76 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 466120, guid: 21b53d388a088124f98515bb62a93ef1,
     type: 2}
   m_PrefabInternal: {fileID: 196405430}
+--- !u!1 &196535064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196535065}
+  - component: {fileID: 196535067}
+  - component: {fileID: 196535066}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [Presque Normal SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &196535065
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 196535064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 679792677}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &196535066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 196535064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 0
+  m_canvasRenderer: {fileID: 196535067}
+  m_TextComponent: {fileID: 679792678}
+  m_materialReferenceIndex: 1
+--- !u!222 &196535067
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 196535064}
+  m_CullTransparentMesh: 0
 --- !u!4 &200677590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 498230, guid: ccbd9ca656fcfe44d8f3fce467c82edd,
@@ -6135,7 +6205,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10458,7 +10528,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10674,7 +10744,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (6)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13084,7 +13154,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (14)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -14123,7 +14193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 163455907}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &664779407
 MonoBehaviour:
@@ -14863,14 +14933,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 196535065}
   m_Father: {fileID: 1286826168}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0225, y: 0.828381}
   m_AnchorMax: {x: 0.24375, y: 0.89762855}
-  m_AnchoredPosition: {x: -2.1400146, y: 9.26001}
-  m_SizeDelta: {x: -4.3, y: -14.51}
+  m_AnchoredPosition: {x: 7, y: 10}
+  m_SizeDelta: {x: 13.4, y: -16.515}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679792678
 MonoBehaviour:
@@ -14891,10 +14962,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'TR3Coins : 1000'
+  m_text: 'TREYCOINS: 1000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f2d2fee50f3958543b2ff5a987a795ec, type: 2}
+  m_sharedMaterial: {fileID: 21441131058443802, guid: f2d2fee50f3958543b2ff5a987a795ec,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14919,8 +14991,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14962,7 +15034,7 @@ MonoBehaviour:
     textComponent: {fileID: 679792678}
     characterCount: 15
     spriteCount: 0
-    spaceCount: 2
+    spaceCount: 1
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -14977,7 +15049,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 196535066}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -17608,6 +17680,7 @@ MonoBehaviour:
   Base50: {fileID: 1871134232483882, guid: f03cb8be93d9f824a98c425a7a75b3f1, type: 2}
   Base75: {fileID: 1661869051311490, guid: a3ca609221cc4e94e8f4fc30669b6c88, type: 2}
   Base100: {fileID: 1776129940715728, guid: ed02c860550693b469c9993a9ba510d9, type: 2}
+  ps: {fileID: 198834736827476250, guid: 10668105823372d4686871ba8cca8e5d, type: 2}
 --- !u!65 &795379983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18067,7 +18140,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21116,7 +21189,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (7)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -21385,7 +21458,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (9)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -22002,7 +22075,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (12)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23138,7 +23211,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (8)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -24659,7 +24732,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25267,7 +25340,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (11)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -27883,7 +27956,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -28580,7 +28653,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (10)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -35827,7 +35900,7 @@ Transform:
   m_LocalScale: {x: 1, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 163455907}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1735906915
 BoxCollider:
@@ -35901,6 +35974,7 @@ MonoBehaviour:
   Base50: {fileID: 1249423650290520, guid: 05b3f7f202d20e1489babee04cec2570, type: 2}
   Base75: {fileID: 1616234608262174, guid: ce9182b121fcc3f47984e582ce15917d, type: 2}
   Base100: {fileID: 1017971799342972, guid: af208da81fd50984bb61fec50f241bac, type: 2}
+  ps: {fileID: 198834736827476250, guid: 4ffe3a0e2fbfbf448bb3919d7957cc65, type: 2}
 --- !u!4 &1736593341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 420324, guid: fe1ed406c4cb39f428a31bfe333b2301,
@@ -36034,7 +36108,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -42931,7 +43005,7 @@ GameObject:
   m_Layer: 0
   m_Name: WayPoints (13)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
