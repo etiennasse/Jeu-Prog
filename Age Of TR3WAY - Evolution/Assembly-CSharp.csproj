@@ -61,15 +61,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Ally.cs" />
     <Compile Include="Assets\Script\BaseHealth.cs" />
-    <Compile Include="Assets\Script\Button2.cs" />
-    <Compile Include="Assets\Script\Button3.cs" />
     <Compile Include="Assets\Script\ButtonController.cs" />
     <Compile Include="Assets\Script\CameraMove.cs" />
+    <Compile Include="Assets\Script\Character.cs" />
     <Compile Include="Assets\Script\CharacterController.cs" />
+    <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
     <Compile Include="Assets\Script\EnemySpawnController.cs" />
-    <Compile Include="Assets\Script\EnnemyBaseHealth.cs" />
     <Compile Include="Assets\Script\FaceCamera.cs" />
     <Compile Include="Assets\Script\GameController.cs" />
     <Compile Include="Assets\Script\KillSelf.cs" />
@@ -89,7 +89,6 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Little Heroes Mega Pack\Read me.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />

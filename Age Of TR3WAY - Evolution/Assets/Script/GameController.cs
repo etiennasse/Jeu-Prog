@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
     {
         var moneyText = GameObject.FindGameObjectWithTag("Money");
         var moneyTextGUI = moneyText.GetComponent<TextMeshProUGUI>();
-        moneyTextGUI.text = "TR3Coins : " + money.ToString();
+        moneyTextGUI.text = "TR3COINS : " + money.ToString();
     }
 
     private static bool TransactionIsValid(int amount)

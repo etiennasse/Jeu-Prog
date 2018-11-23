@@ -19,7 +19,7 @@ public class Ally : Character {
 
     protected override void ResolveAttack()
     {
-        if (target.tag != tagName)
+        if (target.tag != tagName && !target.tag.Contains("Base"))
         {
             Enemy ennemy = target.GetComponent<Enemy>();
             AttackEnnemy(ennemy);

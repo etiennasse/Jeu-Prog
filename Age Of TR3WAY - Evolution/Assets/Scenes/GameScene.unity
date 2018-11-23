@@ -2499,7 +2499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 181198, guid: ff7a35264c3106748859a2fd4b643fd8, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 1.5
 --- !u!114 &139503801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11718,7 +11717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 104700, guid: e7b585eccc2ecfa4b8d8b705807b5ebe, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 0.7
 --- !u!114 &545553673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14962,7 +14960,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'TREYCOINS: 1000'
+  m_text: 'TR3COINS : 1000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f2d2fee50f3958543b2ff5a987a795ec, type: 2}
   m_sharedMaterial: {fileID: 21441131058443802, guid: f2d2fee50f3958543b2ff5a987a795ec,
@@ -15034,7 +15032,7 @@ MonoBehaviour:
     textComponent: {fileID: 679792678}
     characterCount: 15
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -40345,7 +40343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 137632, guid: 620c054e3b294ce4b861615adadb6e8c, type: 2}
   spawnPoint: {fileID: 1141066945}
-  coolDownTime: 3
 --- !u!114 &1915000846
 MonoBehaviour:
   m_ObjectHideFlags: 0
