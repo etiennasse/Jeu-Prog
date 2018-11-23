@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaseHealth : MonoBehaviour {
 
@@ -14,40 +15,45 @@ public class BaseHealth : MonoBehaviour {
     public GameObject Base50;
     public GameObject Base75;
     public GameObject Base100;
+    public ParticleSystem ps;
     private GameObject currentBaseObject;
 
     void Start () {
         health = startHealth;
-        currentBaseObject = Instantiate(Base100, new Vector3(10, 0, 205), Base100.transform.rotation);
+        currentBaseObject = Instantiate(Base100, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4, gameObject.transform.position.z), Base100.transform.rotation);
     }
 	
     public void TakeDamage(float amount)
     {
         health -= amount;
         imageHealth.fillAmount = health / startHealth;
-
         UpdateBaseState();
     }
 
     private void UpdateBaseState()
     {
-        if (this.IsAt75Percent() && currentBaseObject != Base75)
+        if (this.IsAt75Percent() && currentBaseObject.tag != "75")
         {
+            Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
             currentBaseObject = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
         }
-        else if (this.IsAt50Percent() && currentBaseObject != Base50)
+        else if (this.IsAt50Percent() && currentBaseObject.tag != "50")
         {
+            Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base50, new Vector3(10, 0, 205), Base50.transform.rotation);
+            currentBaseObject = Instantiate(Base50, new Vector3(10, 0, 205), Base25.transform.rotation);
         }
-        else if (this.IsAt25Percent() && currentBaseObject != Base25)
+        else if (this.IsAt25Percent() && currentBaseObject.tag != "25")
         {
+            Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base25, new Vector3(10, 0, 205), Base25.transform.rotation);
+            currentBaseObject = Instantiate(Base25, new Vector3(10, 0, 205), Base0.transform.rotation);
         }
-        else if (this.IsDead() && currentBaseObject != Base0)
+
+        if (this.IsDead())
         {
+            Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
             currentBaseObject = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
             Die();
@@ -55,7 +61,16 @@ public class BaseHealth : MonoBehaviour {
     }
 
     private void Die()
-    {       
+    {
+        print(currentBaseObject.tag);
+        if (currentBaseObject.tag == "EnemiesBase")
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (currentBaseObject.tag == "AlliesBase")
+        {
+            SceneManager.LoadScene(3);
+        }
         Destroy(gameObject, 1.7f);
     }
 
