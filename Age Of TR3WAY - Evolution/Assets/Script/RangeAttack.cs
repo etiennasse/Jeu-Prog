@@ -14,42 +14,41 @@ public class RangeAttack : MonoBehaviour {
         this.attackDamage = attackDamage;
     }
 	
-	void Update ()
+	void Update()
     {
         if (target == null)
         {
             Destroy(this.gameObject);
-            return;
         }
+        else
+        {
+            UpdateAttack();
+        }
+    }
 
+    private void UpdateAttack()
+    {
         Vector3 direction = target.transform.position - transform.position + new Vector3(0, 2f, 0f);
         float distance = speed * Time.deltaTime;
 
-        if (direction.magnitude <= distance)
-        {
-            HitTarget();
-            return;
-        }
-
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, 0);
         transform.Translate(direction.normalized * distance, Space.World);
+
+        if (direction.magnitude <= distance)
+            HitTarget();
     }
 
     private void HitTarget()
     {
-        if(target.tag == EnemyController.tagName) {
-            EnemyController enemy = target.GetComponent<EnemyController>();
-            enemy.DealDamage(this.attackDamage);
-        }
-        else if(target.tag == "EnemiesBase" || target.tag == "AlliesBase")
+        if(target.tag == "EnemiesBase" || target.tag == "AlliesBase")
         {
             BaseHealth _base = target.GetComponent<BaseHealth>();
             _base.TakeDamage(this.attackDamage);
         }
         else
         {
-            CharacterController allie = target.GetComponent<CharacterController>();
-            allie.DealDamage(this.attackDamage);
+            Character character = target.GetComponent<Character>();
+            character.DealDamage(this.attackDamage);
         }
         Destroy(this.gameObject);
     }

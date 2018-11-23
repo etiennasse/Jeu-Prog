@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KillSelf : MonoBehaviour {
-
-	// Use this for initialization
+    public const int TIME_BEFORE_DESTROY = 3;
+	
 	void Start () {
-        Invoke("DestroySelf", 3);
+        Invoke("DestroySelf", TIME_BEFORE_DESTROY);
     }
 	
-	// Update is called once per frame
 	void DestroySelf () {
         Destroy(gameObject);
 	}
