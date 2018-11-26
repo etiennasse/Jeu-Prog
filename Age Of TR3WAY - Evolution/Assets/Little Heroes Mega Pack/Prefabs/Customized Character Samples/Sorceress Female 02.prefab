@@ -10997,15 +10997,15 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 14
   range: 12
-  startHealth: 100
+  startHealth: 250
   attackObject: {fileID: 1835209381465846, guid: ca35b5d6c9de19b4db95e5a11b5fd868,
     type: 2}
-  attackDamage: 25
+  attackDamage: 75
   imageHealth: {fileID: 114732338222946724}
   audioDie: {fileID: 82710836997997026}
   audioAttack: {fileID: 82976154607772170}
   ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
-  cost: 500
+  cost: 1675
 --- !u!114 &114625197040269740
 MonoBehaviour:
   m_ObjectHideFlags: 1

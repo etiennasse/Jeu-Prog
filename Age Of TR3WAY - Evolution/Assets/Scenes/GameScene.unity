@@ -13217,7 +13217,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 637957978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 162.003, y: 219.2, z: -299.15845}
+  m_LocalPosition: {x: 162.003, y: 218.413, z: -299.15845}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1620761912}
@@ -14096,7 +14096,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 613c57d3a28bb2d43aeaf282158d9917, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.178
+  m_Volume: 0.316
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -17622,8 +17622,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 795057510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 96.66205, y: -4.4616256, z: 25.388794}
-  m_LocalScale: {x: 10.052312, y: 6.426215, z: 10.389214}
+  m_LocalPosition: {x: 148.94, y: -4.4616, z: 25.386}
+  m_LocalScale: {x: 114.59635, y: 6.426215, z: 10.389214}
   m_Children: []
   m_Father: {fileID: 1428583952}
   m_RootOrder: 4
@@ -43731,6 +43731,8 @@ MonoBehaviour:
   firstEnemy: {fileID: 179068, guid: b96ee66c88d15864aa452d218e65b1e7, type: 2}
   secondEnemy: {fileID: 197988, guid: 535cd9cdb61d71d479ed2a3ab62f76dd, type: 2}
   thirdEnemy: {fileID: 139232, guid: f5307cbfc48c49640b3c88d055c4e529, type: 2}
+  waveDelay: 20
+  waveEnnemyCount: 3
 --- !u!4 &2044294683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446302, guid: c1dcb0322b539634fb85bcb9550da087,

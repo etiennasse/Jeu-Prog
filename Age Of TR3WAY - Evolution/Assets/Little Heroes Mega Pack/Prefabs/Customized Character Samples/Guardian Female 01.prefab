@@ -20698,15 +20698,15 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 14
   range: 12
-  startHealth: 100
+  startHealth: 125
   attackObject: {fileID: 1753122445732978, guid: 1748b462e4b4b9341b542551b4ec7b7b,
     type: 2}
-  attackDamage: 25
+  attackDamage: 35
   imageHealth: {fileID: 114739731522450060}
   audioDie: {fileID: 82874096655560000}
   audioAttack: {fileID: 82671149285451418}
   ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
-  rewardValue: 1000
+  rewardValue: 1750
 --- !u!114 &114739731522450060
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1884,14 +1884,14 @@ MonoBehaviour:
   speed: 5
   turnSpeed: 14
   range: 4
-  startHealth: 100
+  startHealth: 125
   attackObject: {fileID: 0}
   attackDamage: 25
   imageHealth: {fileID: 114169665487769468}
   audioDie: {fileID: 82365790175464634}
   audioAttack: {fileID: 82007014121037390}
   ps: {fileID: 198836564496981316, guid: 263d64fbd34f81441a01c365ca3016b9, type: 2}
-  cost: 500
+  cost: 250
 --- !u!136 &136465378265454340
 CapsuleCollider:
   m_ObjectHideFlags: 1

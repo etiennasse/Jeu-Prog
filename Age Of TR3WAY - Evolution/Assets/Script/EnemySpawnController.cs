@@ -73,27 +73,30 @@ public class EnemySpawnController : MonoBehaviour
     {
         var index = Random.Range(1f, 4f);
         waveNumberOfEnemiesSpawned++;
-        SpawnEnemiesFromIndex((int)index);
+        SpawnEnemiesFromIndex((int)index, (int)waveNumberOfEnemiesSpawned);
         ResetSpawnTimer();
     }
 
     private void EndCurrentWave()
     {
         CurrentlySpawningEnemies = false;
-        waveEnnemyCount++;
+        if (waveEnnemyCount <= 5)
+        {
+            waveEnnemyCount++;
+        }
         ResetSpawnTimer();
     }
 
-    private void SpawnEnemiesFromIndex(int index)
+    private void SpawnEnemiesFromIndex(int index, int num)
     {
         Quaternion rot = Quaternion.Euler(0, -90, 0);
 
         if (index == 1)
-            Instantiate(firstEnemy, spawnPoint.transform.position, rot);
+            Instantiate(firstEnemy, spawnPoint.transform.position + new Vector3(num,0, 0), rot);
         else if (index == 2)
-            Instantiate(secondEnemy, spawnPoint.transform.position, rot);
+            Instantiate(secondEnemy, spawnPoint.transform.position + new Vector3(num, 0, 0), rot);
         else if (index == 3)
-            Instantiate(thirdEnemy, spawnPoint.transform.position, rot);
+            Instantiate(thirdEnemy, spawnPoint.transform.position + new Vector3(num, 0, 0), rot);
     }
 
     private void ResetTimer()

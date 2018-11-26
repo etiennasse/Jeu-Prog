@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4226137975802506}
   - component: {fileID: 198836564496981316}
   - component: {fileID: 199701911740750162}
-  - component: {fileID: 114242599745454842}
+  - component: {fileID: 114413632383899440}
   m_Layer: 0
   m_Name: DeathEffect
   m_TagString: Untagged
@@ -42,7 +42,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!114 &114242599745454842
+--- !u!114 &114413632383899440
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1942882135858060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41a774d602f4d9248b65c4fa6855bc09, type: 3}
+  m_Script: {fileID: 11500000, guid: 301194f650a86bc469a7201e86a1c542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!198 &198836564496981316
