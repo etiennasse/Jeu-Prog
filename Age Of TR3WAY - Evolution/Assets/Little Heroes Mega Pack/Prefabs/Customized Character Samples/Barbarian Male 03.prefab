@@ -1924,7 +1924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 14
-  range: 4
+  range: 8
   startHealth: 100
   attackObject: {fileID: 1953284194819320, guid: 60b2298603f701f4e9a5a2957f3d8ff1,
     type: 2}

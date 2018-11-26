@@ -11110,7 +11110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   turnSpeed: 14
-  range: 4
+  range: 8
   startHealth: 100
   attackObject: {fileID: 1997476202040460, guid: 882c0c43f10e9a8478e3a32d36052948,
     type: 2}

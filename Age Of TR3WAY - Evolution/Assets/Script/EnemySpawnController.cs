@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     public GameObject thirdEnemy;
     private Transform spawnPoint;
 
-    public const float waveDelay = 5f;
+    public const float waveDelay = 555f;
     private float waveDelayTimer = 0f;
     private float waveEnnemyCount = 3f;
     private float waveNumberOfEnemiesSpawned = 0f;

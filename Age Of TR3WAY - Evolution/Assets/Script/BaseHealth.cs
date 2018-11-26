@@ -36,26 +36,26 @@ public class BaseHealth : MonoBehaviour {
         {
             Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base75, new Vector3(10, 0, 205), Base75.transform.rotation);
+            currentBaseObject = Instantiate(Base75, new Vector3(transform.position.x, transform.position.y -4, transform.position.z), Base75.transform.rotation);
         }
         else if (this.IsAt50Percent() && currentBaseObject.tag != "50")
         {
             Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base50, new Vector3(10, 0, 205), Base25.transform.rotation);
+            currentBaseObject = Instantiate(Base50, new Vector3(transform.position.x, transform.position.y - 4, transform.position.z), Base25.transform.rotation);
         }
         else if (this.IsAt25Percent() && currentBaseObject.tag != "25")
         {
             Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base25, new Vector3(10, 0, 205), Base0.transform.rotation);
+            currentBaseObject = Instantiate(Base25, new Vector3(transform.position.x, transform.position.y - 4, transform.position.z), Base0.transform.rotation);
         }
 
         if (this.IsDead())
         {
             Instantiate(ps, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Destroy(currentBaseObject);
-            currentBaseObject = Instantiate(Base0, new Vector3(10, 0, 205), Base0.transform.rotation);
+            currentBaseObject = Instantiate(Base0, new Vector3(transform.position.x, transform.position.y - 4, transform.position.z), Base0.transform.rotation);
             Die();
         }
     }
