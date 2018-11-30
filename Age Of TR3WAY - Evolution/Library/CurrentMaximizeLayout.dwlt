@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 666
+  controlID: 4415
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -123,10 +123,10 @@ MonoBehaviour:
     y: 0
     width: 1501
     height: 931
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 667
+  controlID: 4416
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,10 +147,10 @@ MonoBehaviour:
     y: 0
     width: 1501
     height: 660
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 640
+  controlID: 4417
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,8 +169,8 @@ MonoBehaviour:
     y: 0
     width: 224
     height: 660
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -202,10 +202,10 @@ MonoBehaviour:
     height: 639
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 1682}
-    m_SelectedIDs: f4320000
-    m_LastClickedID: 0
-    m_ExpandedIDs: beb9feff000000007a610000fe620000e8650000
+    scrollPos: {x: 0, y: 960}
+    m_SelectedIDs: f250fcff
+    m_LastClickedID: -241422
+    m_ExpandedIDs: ee56fcfff803feffa805feff5847feff80b2feffe0b9feff000000007a610000e86500009e680000506a0000926b0000800e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -283,14 +283,14 @@ MonoBehaviour:
     height: 639
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 1806.8040840462231
+  lastFramingTime: 1251.8561562441314
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 254.34721, y: -89.20576, z: 527.7997}
+    m_Target: {x: 648.14014, y: -157.03043, z: 687.8485}
     speed: 2
-    m_Value: {x: 254.34721, y: -89.20576, z: 527.7997}
+    m_Value: {x: 648.14014, y: -157.03043, z: 687.8485}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -318,19 +318,19 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.13947205, y: -0.13765766, z: 0.019583065, w: -0.98041546}
+    m_Target: {x: 0.10931666, y: 0.38383895, z: -0.04581974, w: 0.915761}
     speed: 2
-    m_Value: {x: -0.13947205, y: -0.13765766, z: 0.019583065, w: -0.98041546}
+    m_Value: {x: 0.10931666, y: 0.38383895, z: -0.04581974, w: 0.915761}
   m_Size:
-    m_Target: 371.6201
+    m_Target: 738.5612
     speed: 2
-    m_Value: 371.6201
+    m_Value: 738.5612
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_ShowGlobalGrid: 1
-  m_LastSceneViewRotation: {x: -0.11829543, y: 0.06251885, z: -0.007462841, w: -0.9909803}
+  m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -356,10 +356,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 228
-    y: 92
-    width: 1284
-    height: 655
+    x: 234
+    y: 100
+    width: 1273
+    height: 639
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &10
 MonoBehaviour:
@@ -455,8 +455,8 @@ MonoBehaviour:
     y: 660
     width: 1501
     height: 271
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -500,20 +500,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Script
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Script
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\533\Desktop\heyy\Age Of TR3WAY - Evolution
+  m_LastProjectPath: C:\Users\533\Desktop\JEU\Age Of TR3WAY - Evolution
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 135}
-    m_SelectedIDs: 4a590000
-    m_LastClickedID: 22858
-    m_ExpandedIDs: 0000000098550000b2580000b6590000605a0000645a0000dc5a0000605b0000b65e0000d6710000d8710000da710000dc71000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 96550000
+    m_LastClickedID: 21910
+    m_ExpandedIDs: 0000000096550000b2580000b6590000605a0000645a0000dc5a0000605b0000b65e0000d6710000d8710000da710000dc71000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -541,7 +541,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000098550000b2580000b6590000605a0000645a0000dc5a0000605b0000b65e0000d6710000d8710000da710000dc71000000ca9a3b
+    m_ExpandedIDs: 0000000096550000b2580000b6590000605a0000645a0000dc5a0000605b0000b65e0000d6710000d8710000da710000dc71000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -566,8 +566,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f4320000
-    m_LastClickedInstanceID: 13044
+    m_SelectedInstanceIDs: f250fcff
+    m_LastClickedInstanceID: -241422
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000a88f0000a0690000
     m_RenameOverlay:
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewResizer:
-    m_CachedPref: 493
+    m_CachedPref: 187
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
