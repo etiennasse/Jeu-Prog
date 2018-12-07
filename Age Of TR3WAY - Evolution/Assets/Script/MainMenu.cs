@@ -18,6 +18,6 @@ public class MainMenu : MonoBehaviour {
     public void ReturnMainMenu()
     {
         SceneManager.LoadScene(0);
-        print("test");
+        GameController.SetMoney(1000);
     }
 }

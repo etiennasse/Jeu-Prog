@@ -32,6 +32,11 @@ public class GameController : MonoBehaviour {
         moneyTextGUI.text = "TR3COINS : " + money.ToString();
     }
 
+    public static void SetMoney(int value)
+    {
+        money = value;
+    }
+
     private static bool TransactionIsValid(int amount)
     {
         return money - amount >= 0;
